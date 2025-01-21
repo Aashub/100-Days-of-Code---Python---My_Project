@@ -1,16 +1,97 @@
+from main import MENU, resources
+from art import logo
+
+print(logo)
+
+"""these are the actual value of all this coins"""
+QUARTERS = 0.25
+DIMES = 0.10
+NICKLES = 0.05
+PENNIES = 0.01
+
+"""in this function we basically check we have enough ingredients in order to make coffee"""
+def is_resource_sufficient(coffee_ingredients):
+
+    for ingred in coffee_ingredients:
+
+        # if coffee ingredients contains more resources than available resources then it will not create coffee
+        if coffee_ingredients[ingred] >= resources[ingred]:
+            print("Sorry there is not enough resources")
+            return False
+
+    return True
+
+"""here user will insert their coins so he can get coffee"""
+def insert_coin():
+    quarters = int(input("how many quarters?:"))
+    dimes = int(input("how many dimes?:"))
+    nickles = int(input("how many nickles?:"))
+    pennies = int(input("how many pennies?:"))
+
+    inserted_amount = QUARTERS * quarters + DIMES * dimes + NICKLES * nickles + PENNIES * pennies
+
+    return inserted_amount
+
+"""in this function we can check transaction that amount provided by user is enough 
+or not if enough then coffee is being dispensed"""
+def check_transaction(inserted_amo, actual_cost):
+
+    if inserted_amo < actual_cost:
+        print("Sorry that's not enough money. Money refunded")
+        return 0
+
+    elif inserted_amo >= actual_cost:
+        change = inserted_amo - actual_cost
+        print(f"Here is ${round(change,2)} dollars in change.")
+        return  actual_cost
+
+"""in this function once the transaction is being successful then coffee is created and from overall resources the selected
+coffee amount is being reduced and profit amount is being added in the coffee machine use 'report' to check"""
+def reduce_the_ingredient(profit_amount, ordered_cof_ingred):
+
+    for ingred in ordered_cof_ingred:
+        resources[ingred] -= ordered_cof_ingred[ingred]
+
+    resources["profit"] += profit_amount
+
+
+should_continue = True
+
+while should_continue:
+    try:
+        select_coffee = input("What would you like? (espresso/latte/cappuccino):").lower()
+
+        if select_coffee == "off":
+            should_continue = False
+
+        # here actual overall profit and current resources contain will show
+        elif select_coffee == "report":
+            print(f"Water: {resources["water"]}ml")
+            print(f"Milk: {resources["milk"]}ml")
+            print(f"Coffee: {resources["coffee"]}gm")
+            print(f"Money: ${resources["profit"]}")
+
+        else:
+            ordered_coffee = MENU[select_coffee]
+            if is_resource_sufficient(ordered_coffee["ingredients"]) :
+
+                print("Insert The Coins:")
+                inserted_amount = insert_coin()
+
+                profit = check_transaction(inserted_amount, ordered_coffee["cost"])
+
+                if profit > 0:
+                    reduce_the_ingredient(profit, ordered_coffee["ingredients"])
+                    print(f"Here is your {select_coffee} ☕ ️. Enjoy!")
+
+    # if user provide wrong input then this msg will appear
+    except Exception as e:
+        print(f"The value provided is incorrect please provide correct value: {e}")
 
 
 
 
-
-
-
-
-
-
-
-
-
+# ___________________________________________________________________________Previously created Coffee machine code_____________________________________________________________________________
 
 # # todo: menus
 # MENU = {
