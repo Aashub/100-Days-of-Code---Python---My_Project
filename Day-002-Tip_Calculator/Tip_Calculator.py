@@ -1,27 +1,8 @@
+print("Welcome to the tip Calculator!")
+bill = float(input("What was the total bill? $"))
+tip = int(input("How much tip would you like to give? 10, 12, or 15? "))
+split = int(input("How many people to split the bill?"))
 
-print("Welcome to the Tip Calculator")
-total_bill = input("enter the total amount you have to pay $")
-number_of_people = input("enter the number of how many people you are")
-tip = input("enter the amount you want split into pay")
+split_amount = bill*(1+(tip/100))/split
 
-float(tip)
-tip1 = 1.10
-tip2 = 1.12
-tip3 = 1.15
-spplited_amount = 0
-
-if tip == tip1:
- spplited_amount = (float(total_bill) / int(number_of_people)) *  float(tip1)
-
-elif tip == tip2:
- spplited_amount = (float(total_bill) / int(number_of_people)) *  float(tip2)
-
-else :
- spplited_amount = (float(total_bill) / int(number_of_people)) *  float(tip3)
-
-final_amount = round(spplited_amount, 2)
-final_amount = "{:.2f}".format(spplited_amount)
- 
-
-print(f"the amount is splitted between friends are $:{final_amount}")
-
+print(f"Each person should pay: ${round(split_amount,2)}")
