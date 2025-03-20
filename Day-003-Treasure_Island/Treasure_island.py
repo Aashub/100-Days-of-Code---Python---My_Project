@@ -27,19 +27,19 @@ print("Your mission is to find the treasure.")
 
 
 road = input("You have come to road decide which way you wanna"
-             " Go type left and right\n").lower()
+             " Go type 'left' and 'right'\n").lower()
 
 
 if road == "left":
     forest = input("You have come to a forest where you have found two ways"
-          " to go left and right\n").lower()
+          " to go 'left' and 'right'\n").lower()
 
     if forest == "left":
         print("You have fall into a swamp, Game Over!")
 
     elif forest == "right":
         lake = input("You have reached out to a lake decide which way "
-                     "you wanna go, cross the lake, Swim or boat\n").lower()
+                     "you wanna go, cross the lake, 'Swim' or 'boat'\n").lower()
 
         if lake == "swim":
             print("crocodile was present in a lake, they have eaten you, Game Over!")
@@ -47,12 +47,12 @@ if road == "left":
         elif lake == "boat":
             hill = input("you have safely crossed the lake and reached out to a hill"
                          " Do you wanna climb the hill or go from a cave select from "
-                         "climb or cave\n").lower()
+                         "'climb' or 'cave'\n").lower()
 
             if hill == "cave":
                 print("you have safely gone inside the cave")
                 direction = input("inside the cave you have found three ways to go "
-                                  "left, Right and Center\n")
+                                  "'left', 'Right' and 'Center'\n")
 
                 if direction == "left":
                     print("Hurray You Found the Treasure, Game Over")
