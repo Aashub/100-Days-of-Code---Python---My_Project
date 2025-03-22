@@ -1,4 +1,6 @@
-roc = '''
+import random
+
+rock = '''
     _______
 ---'   ____)
       (_____)
@@ -7,7 +9,7 @@ roc = '''
 ---.__(___)
 '''
 
-pap = '''
+paper = '''
     _______
 ---'   ____)____
           ______)
@@ -16,7 +18,7 @@ pap = '''
 ---.__________)
 '''
 
-sci = '''
+scissors = '''
     _______
 ---'   ____)____
           ______)
@@ -25,48 +27,43 @@ sci = '''
 ---.__(___)
 '''
 
+#rock pare scissors variable list.
+RPS_list = [rock,paper,scissors]
 
-import random
-import os
+#here player will decide what he wants to choose
+pl_choice =   int(input("What do you choose? Type 0 for Rock, 1 for Paper & 2 for Scissors\n"))
 
-moves = [roc, pap, sci]
+#if user choose more than 2 and less than 0 then it will print this msg.
+if pl_choice > 2 or pl_choice < 0:
+    print("You typed an Invalid Number, You Lose!")
+    exit()
+player = RPS_list[pl_choice]
+computer = random.choice(RPS_list)
 
-userinput = int(input("provide user input in form of rock(0), paper(1), scissors(2)\n"))
+print("Player Chose:")
+print(player)
+print("Computer Chose:")
+print(computer)
 
-computerinput = random.randint(0,2)
+# here all the logics work out and print whoever is winner
+if player == rock and computer == scissors:
+    print("You Win")
 
-rock = 0
-paper = 1
-scissors = 2
+if player == paper and computer == rock:
+    print("You Win")
 
-if(userinput == rock or userinput == paper or userinput == scissors):
-    if(userinput ==  computerinput):
-        print(f"{moves[userinput]}\n YOU \n{moves[computerinput]}\n COMPUTER\n\n")
-        print("The match is Draw!")
-        
-    elif(userinput == rock and computerinput == paper):    
-        print(f"{moves[userinput]}\n YOU \n{moves[computerinput]}\n COMPUTER\n\n")
-        print("You Lost!")
+if player == scissors and computer == paper:
+    print("You Win")
 
-    elif(userinput == rock and computerinput == scissors):        
-        print(f"{moves[userinput]}\n YOU \n{moves[computerinput]}\n COMPUTER\n\n")
-        print("You Won!")
+if player == rock and computer == paper:
+    print("Computer Win")
 
-    elif(userinput == paper and computerinput == rock):    
-        print(f"{moves[userinput]}\n YOU \n{moves[computerinput]}\n COMPUTER\n\n")
-        print("You Won!")
+if player == scissors and computer == rock:
+    print("Computer Win")
 
-    elif(userinput == paper and computerinput == scissors):        
-        print(f"{moves[userinput]}\n YOU \n{moves[computerinput]}\n COMPUTER\n\n")
-        print("You Lost!")
-        
-    elif(userinput == scissors and computerinput == rock):    
-        print(f"{moves[userinput]}\n YOU \n{moves[computerinput]}\n COMPUTER\n\n")
-        print("You Lost!")
+if player == paper and computer == scissors:
+    print("Computer Win")
 
-    elif(userinput == scissors and computerinput == paper):        
-        print(f"{moves[userinput]}\n YOU \n{moves[computerinput]}\n COMPUTER\n\n")
-        print("You Won!")
+elif player == computer:
+    print("Draw!")
 
-elif(userinput > 2):  
-    print("invalid input provide a right input")    
