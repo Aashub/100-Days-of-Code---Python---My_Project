@@ -5,16 +5,15 @@
 #     turn_left()
 #     turn_left()
 #
+# while not at_goal():
 #
-# def robot():
 #     if right_is_clear():
 #         turn_right()
 #         move()
+#
 #     elif wall_in_front():
 #         turn_left()
-#     elif wall_on_right():
+#
+#     elif front_is_clear():
 #         move()
-#
-#
-# while not at_goal():
-#     robot()
+
