@@ -1,67 +1,69 @@
-
-
 import random
-from hangman_art import stages
-from hangman_art import logo
-from hangman_words import word_list
+from hangman_art import logo, stages
+from hangman_words import  word_list
+
 
 print(logo)
-end_of_game = False
-# word_list = ["ardvark", "baboon", "camel"]
+life = 6
 
-chosen_word = random.choice(word_list)
-word_length = len(chosen_word)
-
-#TODO-1: - Create a variable called 'lives' to keep track of the number of lives left.
-#Set 'lives' to equal 6.
-
-lives = 6
-
-#Testing code
+# here we can get the random word from word_list
+word = random.choice(word_list)
 
 
-#Create blanks
-display = []
-for _ in range(word_length):
-    display += "_"
+char_list = []
+dash_list = []
 
-while not end_of_game:
-    guess = input("Guess a letter: ").lower()
+# here we will add the "_" & word character in a list
+for char in word:
+    char_list.append(char)
+    dash_list.append("_")
 
-    if guess in display:
-      print(f"you already {guess} guessed this letter try different one ")
+# here we will convert the list into again strings
+for string in range(0,len(word)):
+    word_str = "".join(map(str,char_list))
+    dash_str = "".join(map(str, dash_list))
 
-    #Check guessed letter
-    for position in range(word_length):
-        letter = chosen_word[position]
-        # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
-        if letter == guess:
-            display[position] = letter
+print(word_str)
+print(f"Word to guess: {dash_str}")
 
-    #TODO-2: - If guess is not a letter in the chosen_word,
-    #Then reduce 'lives' by 1.
-    #If lives goes down to 0 then the game should stop and it should print "You lose."
+should_continue = True
 
-    if guess not in chosen_word:
-        print(
-            f"You guessed this {guess} letter and it was in chosen word, you loose life"
-        )
-        print(lives)
-        lives = lives - 1
-        if lives == 0:
-            print(f"You Lose, the actual word is {chosen_word}")
-            end_of_game = True
+#here the loop will run until its condition didn't become False
+while should_continue:
 
-    #Join all the elements in the list and turn it into a String.
-    print(f"{' '.join(display)}")
+    print(f"****************************{life}/6 LIVES LEFT****************************")
+    Guess = input("Guess the Word: ").lower()
 
-    #Check if user has got all letters.
-    if "_" not in display:
-        end_of_game = True
-        print("You win.")
+    # if Guess character is present in word_str then condition become True
+    if Guess in word_str:
 
-    #TODO-3: - print the ASCII art from 'stages' that corresponds to the current number of 'lives' the user has remaining.
+        # in every correct guess the guessed value is replaced with _ character
+        # and again converted into string
+        for correct_guess in range(0,len(word_str)):
+            if word_str[correct_guess] == Guess:
+                dash_list[correct_guess] = Guess
+                dash_str = "".join(map(str, dash_list))
 
-    for index in reversed(range(len(stages))):
-        if index == lives:
-            print(stages[index])
+
+        print(f"Word to guess: {dash_str}")
+        print(stages[life])
+
+        if dash_str == word:
+            print("****************************YOU WIN****************************")
+            should_continue = False
+
+    # if Guess character is not present in word_str then condition will run
+    elif Guess not in word_str:
+        life -= 1
+        print(f"Word to guess: {dash_str}")
+        print(f"You guessed {Guess}, that's not in the word. You lose a life.")
+        print(stages[life])
+
+        if life == 0:
+            print(f"***********************IT WAS {word}! YOU LOSE**********************")
+            should_continue = False
+
+
+
+
+
