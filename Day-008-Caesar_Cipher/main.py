@@ -21,11 +21,17 @@ def caesar_cipher():
         # by using modular operator on (alpha_index & shift_amount) & alphabet_length we get the remainder value
         # which we can use as index value to encrypted letter.
         for letter in original_text:
-            alpha_index = alphabet.index(letter)
 
-            encrypted_index = (alpha_index + shift_amount) % alphabet_length
-            if alphabet[alpha_index] == letter:
-                encrypted_string += alphabet[encrypted_index]
+            # this if statement handle the problem if user have putted any symbol, number, which is not
+            # present in alphabet list.
+            if letter not in alphabet:
+                encrypted_string += letter
+
+            else:
+                alpha_index = alphabet.index(letter)
+                encrypted_index = (alpha_index + shift_amount) % alphabet_length
+                if alphabet[alpha_index] == letter:
+                    encrypted_string += alphabet[encrypted_index]
 
         print(f"Here's the encoded text: {encrypted_string}")
         return encrypted_string
@@ -37,10 +43,18 @@ def caesar_cipher():
         # by using modular operator on (alpha_index & shift_amount) & alphabet_length we get the remainder value
         # which we can use as index value to decrypt letter.
         for letter in original_text:
-            alpha_index = alphabet.index(letter)
-            decrypted_index = (alpha_index - shift_amount) % alphabet_length
-            if alphabet[alpha_index] == letter:
-                decrypted_string += alphabet[decrypted_index]
+
+            # this if statement handle the problem if user have putted any symbol, number, which is not
+            # present in alphabet list.
+            if letter not in alphabet:
+                decrypted_string += letter
+
+            else:
+                alpha_index = alphabet.index(letter)
+                decrypted_index = (alpha_index - shift_amount) % alphabet_length
+                if alphabet[alpha_index] == letter:
+                    decrypted_string += alphabet[decrypted_index]
+
 
         print(f"Here's the decoded result: {decrypted_string}")
         return decrypted_string
