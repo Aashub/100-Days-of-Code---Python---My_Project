@@ -1,74 +1,63 @@
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-# to import logo from the art.py file
-from  art import logo
-
+from art import logo
 
 print(logo)
-# ceasar function to get input of text, the number of shift in letter and what do you want to do with text
-# encode or decode
-def caesar(plain_text, shift_amount, direction_txt):
 
-  # check do you want to encode
-  if direction_txt == "encode": 
-    shifter = ""
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-    # loop through the text / then check the letter present in alphabet if present then go inside
-    for index in plain_text:
-      if index in alphabet:
+alphabet_length = len(alphabet)
 
-        # store alphabet  index number in position and then by adding shift_amount with positon and store in 
-        # shifter we get the result of encoding
-        position = alphabet.index(index)
-        shifter += alphabet[shift_amount + position]
+"""this function will start the caesar cipher"""
+def caesar_cipher():
 
-      # if index is not present in alphabet then run this part where provided text store same to same without change
-      else:
-        shifter += index
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
 
-    print(f"The encoded text is {shifter}")
+    """this function will encode the message"""
+    def encrypt(original_text, shift_amount):
 
-  
-  # similar process as we did in encoding
-  elif direction_txt == "decode":
-    unshifter = ""
-    for jndex in plain_text:
-      if jndex in alphabet:
-        position = alphabet.index(jndex)
-        unshifter += alphabet[position - shift_amount]
+        encrypted_string = ""
 
-      else:
-        unshifter += jndex
-    print(f"The decoded text is {unshifter}")
+        # by using modular operator on (alpha_index & shift_amount) & alphabet_length we get the remainder value
+        # which we can use as index value to encrypted letter.
+        for letter in original_text:
+            alpha_index = alphabet.index(letter)
 
-should_continue = True
+            encrypted_index = (alpha_index + shift_amount) % alphabet_length
+            if alphabet[alpha_index] == letter:
+                encrypted_string += alphabet[encrypted_index]
 
-# create while loop to ask user do you want to continue coding or decoding of text
-while should_continue == True:
+        print(f"Here's the encoded text: {encrypted_string}")
+        return encrypted_string
 
-  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-  text = input("Type your message:\n").lower()
-  shift = int(input("Type the shift number:\n"))
+    """this function will decode the message"""
+    def decrypt(original_text, shift_amount):
+        decrypted_string = ""
 
-  # to check the character shift if shift is greater then 26 then divide it by 26
-  if shift > 26:
-    sh = shift%26
-    caesar(plain_text= text, shift_amount=sh, direction_txt= direction)
-    print(sh)
-  
-  # else run normally
-  elif shift < 26:
-    sh = shift
-    caesar(plain_text= text, shift_amount=sh, direction_txt= direction)
+        # by using modular operator on (alpha_index & shift_amount) & alphabet_length we get the remainder value
+        # which we can use as index value to decrypt letter.
+        for letter in original_text:
+            alpha_index = alphabet.index(letter)
+            decrypted_index = (alpha_index - shift_amount) % alphabet_length
+            if alphabet[alpha_index] == letter:
+                decrypted_string += alphabet[decrypted_index]
 
-  # here we ask user to restart the the game or not
-  restart = input("Do you want to restart the cipher text type 'yes' and 'no' \n").lower()
-  if restart =="yes":
-    should_continue
+        print(f"Here's the decoded result: {decrypted_string}")
+        return decrypted_string
 
-  elif restart == "no":
-    should_continue = False
-    print("Good Bye !")
-  
+    """here the encrypt and decrypt function will be called."""
+    if direction == "encode":
+        encrypt(original_text = text, shift_amount = shift)
+
+    elif direction == "decode":
+        decrypt(original_text = text, shift_amount = shift)
+
+    exit_cipher = input("Type yes if you want to go again. Otherwise type no.").lower()
+    if exit_cipher == "yes":
+        caesar_cipher()
+
+    elif exit_cipher == "no":
+        print("Goodbye")
 
 
+caesar_cipher()
