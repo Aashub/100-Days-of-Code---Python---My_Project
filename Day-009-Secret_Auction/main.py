@@ -1,78 +1,48 @@
-from replit import clear
-#HINT: You can call clear() to clear the output in the console.
-
 from art import logo
 
 print(logo)
 
-print("Welcome th the Secret Biding program")
+#empty dictionary to store the name and bid values
+biding_details = {}
+
+#This function will give us the highest bidder who won the bid.
+def Blind_Auction():
+    name = input("What is your Name?: ").lower()
+    bid = int(input("What is your bid?: $"))
+
+    # here the bidder name and their bid is being added in the dictionary
+    biding_details[name] = bid
+
+    should_continue = True
+    while should_continue:
+        other_bidders = input("Are there any other bidders? Type 'Yes' or 'no'.").lower()
+
+        # if There is another bidder then this if statement will run the blind_auction function run again so the next
+        # bidder bid their amount
+        if other_bidders == "yes":
+            print("\n" * 15)
+            Blind_Auction()
+
+        #if their no other bidder then this elif statement will run and give us the highest bidder.
+        elif other_bidders == "no":
+            highest_bidder = 0
+            bidder_name = ""
+
+            # here the highest bidder we are going to be found out.
+            for bid in biding_details:
+
+                if biding_details[bid] >= highest_bidder:
+                    highest_bidder = biding_details[bid]
+                    bidder_name = bid
+
+            print(f"\nThe winner is {bidder_name} with a bid of ${highest_bidder}")
+            exit()
+
+        else:
+            print("Input is Wrong!, Please provide the correct input!")
+
+Blind_Auction()
 
 
-# to store the name and amount element 
-list_name = []
-list_amount = []
 
 
-# function to get the bider name and biding amount
-def secret_biding(bider_name,biding_amount):
-
-  
-  list_amount.append(biding_amount)
-  list_name.append(bider_name)
-
-  # here the dictionary store the list element in it
-  registration = {"Names": [list_name], "Amount": [list_amount]}
-
-  result_amount = max(list_amount)
-
-  # here the result amount index is stored in index finder so we can use it to find highest bider name
-  index_finder = list_amount.index(result_amount)
-
-  result_name = list_name[index_finder]
-
-  return result_name,result_amount
-
-
-biding = True
-
-
-# while loop runs until the biding statement is not getted false
-while biding is True:
-
-    
-    name = input("What is your name? : ").title()
-    bid = int(input("What's your bid? : $"))
-    other_bider = input(
-        "Are there any other bidders ? Type 'Yes' or 'No'.").title()
-
-    # storing the return value of secret_biding function
-    name,amount = secret_biding(bider_name=name,
-                      biding_amount=bid)
-
-
-    
-    if other_bider == "Yes":
-        clear()
-        secret_biding(bider_name=name,
-                      biding_amount=bid
-                      )
-        
-    elif other_bider == "No":
-        clear()
-        secret_biding(bider_name=name,
-                      biding_amount=bid
-                      )
-
-
-        name,amount = secret_biding(bider_name=name,
-                      biding_amount=bid
-                      )
-        print(f"The Winner is {name} with a bid of ${amount}.")
-      
-
-        biding = False
-
-    else:
-        clear()
-        print("Invalid Input try Again !")
-        
