@@ -1,314 +1,143 @@
-import random
 import art
+from random import  choice
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
 
 def black_jack():
-    """black jack function start the game from beginning and even restart the start if needed"""
-    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    """this function will start the Game """
 
-    cards_dict = {"player_cards": [],
-                  "computer_cards": []
-                  }
+    #this is the Dictionary which will store the player & dealer card value and their overall score
+    Cards = {
+        "player_card": [],
+        "computer_card": [],
 
-    start = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+        "player_score": 0,
+        "computer_score": 0
+    }
 
-    if start == "y":
-        def player(pl_total, iterate):
-            """In this function user will get its own pair of cards  and also total value of cards"""
-            for shuffle in range(0, iterate):
-                random_num = random.randint(0, 12)
+    user_input = input("Do you want to play a game of Blackjack? Type 'y' or 'n':").lower()
 
-                # if comp_total is greater than 16 then it will change the first card(11) value to (1)
-                if pl_total >= 16:
-                    if random_num == 0:
-                        cards_dict["player_cards"][random_num] = 1
-                        cards_dict["player_cards"].append(cards[random_num])
-
-                # else the card value will not change it will be stayed 11
-                else:
-                    cards_dict["player_cards"].append(cards[random_num])
-
-            # addition will happen here.
-            for addition in cards_dict["player_cards"]:
-                pl_total += addition
-
-            return  pl_total
-
-        def computer(comp_total, iterate):
-            """In this function user will get its own pair of cards  and also total value of cards"""
-            for shuffle in range(0, iterate):
-                random_num = random.randint(0, 12)
-
-                # if comp_total is greater than 16 then it will change the first card(11) value to (1)
-                if comp_total >= 16:
-                    if random_num == 0:
-                        cards_dict["computer_cards"][random_num] = 1
-                        cards_dict["computer_cards"].append(cards[random_num])
-
-                # else the card value will not change it will be stayed 11
-                else:
-                    cards_dict["computer_cards"].append(cards[random_num])
-
-            # cards addition happened here
-            for addition in cards_dict["computer_cards"]:
-                comp_total +=  addition
-
-            return comp_total
-
-
-        def winner(pl_total, comp_total):
-
-            """In this function we will find out who is won and who is lost a particular round they have played."""
-            print(f"Your final hand: {cards_dict["player_cards"]}, final score: {pl_total}")
-            print(f"Computer's final hand: {cards_dict["computer_cards"]}, final score: {comp_total}")
-
-            if pl_total > comp_total and  pl_total > 21:
-                print("You went over. You lose 😭\n")
-
-            elif pl_total > comp_total and pl_total <= 21:
-                print("You win 😃\n")
-
-            elif pl_total < comp_total and comp_total < 22:
-                print("You lose 😤\n")
-
-            elif pl_total == comp_total:
-                print("Draw 🙃\n")
-
-        print("\n" * 20)
+    if user_input == "y":
+        print("\n" * 17)
         print(art.logo)
 
-        runtime = 2
-        player_tot = 0
-        computer_tot = 0
 
-        player_total = player(player_tot, runtime)
-        computer_total = computer(computer_tot, runtime)
+        def final_result():
+            """this function will print out the final result of the game"""
+
+            print(f"Your final hand: {Cards["player_card"]} , final score: {Cards["player_score"]}")
+            print(f"Computer's final hand: {Cards["computer_card"]}, final score: {Cards["computer_score"]}")
+
+
+        def player_cards(num):
+            """this function will give the random cards to player and also give its card total score
+                   and store player card value and total score in dictionary"""
+
+            for pl_cards in range(0, num):
+                if num == 2:
+                    Cards["player_card"].append(choice(cards))
+                    Cards["player_score"] += Cards["player_card"][pl_cards]
+
+                #when player want to get another card this if statement will run and will give
+                # him a random another card
+                if num == 1:
+                    Cards["player_card"].append(choice(cards))
+                    Cards["player_score"] += Cards["player_card"][len(Cards["player_card"])-1]
+
+                    if Cards["player_score"] > 21:
+                        final_result()
+                        print("You went over. You lose 😭")
+                        black_jack()
+
+
+        def computer_cards(num):
+            """this function will give the random cards to dealer and also give its card total score
+                            and store dealer card value and total score in dictionary"""
+
+            for com_cards in range(0, num):
+                if num == 2:
+                    Cards["computer_card"].append(choice(cards))
+                    Cards["computer_score"] += Cards["computer_card"][com_cards]
+
+                #if dealer score is less than 17 than this if statement will run and it will add another
+                #card and it will add cards until dealer score don't go beyond 17
+                elif num == 1:
+                    Cards["computer_card"].append(choice(cards))
+                    Cards["computer_score"] += Cards["computer_card"][len(Cards["computer_card"])-1]
+
+                    if Cards["computer_score"] < 17:
+                        num = 1
+                        computer_cards(num)
+
+                    elif Cards["computer_score"] >= 17:
+
+                        if Cards["computer_score"] <= 21:
+                            return
+
+                        elif Cards["computer_score"] > 21:
+                            final_result()
+                            print("Opponent went over. You win 😁")
+                            black_jack()
+
+            return Cards["computer_card"][0]
+
+
+        pl_num = 2
+        com_num = 2
+
+        #here the first time player and dealer card value is being assigned
+        player_cards(pl_num)
+        computer_first_card = computer_cards(com_num)
 
         should_continue = True
-        runtime = 1
 
-        # the loop will run continuously until the condition don't became false.
+        # this loop will help to run the game until the player decide now he don't want anymore cards
         while should_continue:
-            print(f"Your cards: {cards_dict["player_cards"]}, current score: {player_total}")
-            print(f"Computer's first card: {cards_dict["computer_cards"][0]}")
+            print(f"Your cards: {Cards["player_card"]}, current score: {Cards["player_score"]}")
+            print(f"Computer's first card: {Cards["computer_card"][0]}")
 
-            get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
-            if get_another_card == "y":
-                player_total = player(player_tot, runtime)
+            new_card = input("Type 'y' to get another card, type 'n' to pass:").lower()
 
-                if player_total > 21:
-                    winner(player_total, computer_total)
-                    black_jack()
+            if new_card == "y":
+                pl_num = 1
+                player_cards(pl_num)
+                print(f"Computer's first card: {computer_first_card}")
 
-            elif get_another_card == "n":
-                should_continue2 = True
+            elif new_card == "n":
 
-                # this loop is for computer total and it will run until certain condition did not became false.
-                while should_continue2:
-                    if computer_total < 17:
-                        computer_total =  computer(computer_tot, runtime)
+                if Cards["computer_score"] < 17:
+                    num = 1
+                    computer_cards(num)
 
-                    elif computer_total >= 17:
+                if Cards["computer_score"] == Cards["player_score"]:
+                    final_result()
+                    print("Draw 🙃")
 
-                        if computer_total > 21:
-                            print("Opponent went over. You win 😁\n")
-                            winner(player_total,computer_total)
-                            break
+                elif Cards["computer_score"] < Cards["player_score"]:
 
-                        else:
-                            winner(player_total, computer_total)
-                            break
+                    final_result()
+                    print("You win 😃")
 
-                should_continue = False
+                elif Cards["computer_score"] > Cards["player_score"]:
+                    final_result()
+                    print("You lose 😤")
+
                 black_jack()
 
-            else:
-                print("Invalid Input!, Please Provide correct Input!")
-
-
-    elif start == "n":
-        print("thank you for playing this game!")
-        exit()
-
     else:
-        print("Invalid Input, Please provide the correct input!")
-        black_jack()
-
+        print("Good bye")
+        exit()
 black_jack()
 
-# _______________________________________________________________same_project_code_but_created_last_year_________________________________________________________________
-
-# from art import logo
-# from replit import clear
-# import sys
-
-# import random
 
 
-# print(logo)
-
-# # this fucntion assign dealer and player their cards also let them assign one extra card to retrive
-# def get_deal():
-#   cards = [11,2,3,4,5,6,7,8,9,10,10,10,10]
-  
-#   player_value = random.sample(cards, 2)
-#   player_value_incr = random.sample(cards,1)
-#   dealer_value = random.sample(cards, 2)
-#   dealer_value_incr = random.sample(cards, 1)
-#   Deal = {"key1" : player_value, "key2" : dealer_value}
-
-#   # returing the pl cards and dealer cards and also extra cards that can help later
-#   return Deal["key1"],Deal["key2"],player_value_incr,dealer_value_incr
 
 
-# START = input("Welcome to Blackjack game type start to start the Deal :").capitalize()
-
-# # assigning the get_deal value to all this parameter
-# player_value,dealer_value,player_hit_value,dealer_hit_value = get_deal()
 
 
-# # when user type start then it start the game
-# if START == "START":
-#   get_deal()
-
-# else:
-#   print("Invalid Input Provide necessay input to start Game.")
 
 
-# #  In this fucntion dealer, one value is hide by the dash so the player dont see it.
-# def get_dealer(dealer_value):
-
-#   for index, items in enumerate(dealer_value):
-#     if index == 0:
-#       index_value = dealer_value[index]
-#       dealer_value[index] = "_"
-  
-#   return dealer_value,index_value
-
-# # here hide(dash) value and hidden value both assign to the given parameter
-# dealer_dash_value, original_value = get_dealer(dealer_value)
-
-# # in this fucntion the cards value are called every time this fucntion called.
-# def print_cards():
-#   print("the player cards are :")
-#   print(player_value)
-#   print("The dealer cards are :")
-#   print(dealer_dash_value)
 
 
-# should_continue_player = True
-
-# # run this while loop until its conditin dont turn into false
-# while should_continue_player == True:
-
-#   clear()
-#   print_cards()
-#   # ask user to decide what he wants to do.
-#   ask_player = input("decide what you want to choose to win game 'Hit' = increase_hand_value,'Stand' = keep_current_hand_value :").title()
-
-  
-#   total_pl_value = 0
-#   # if player decide to hit then the new card is drawn from the deck(cards)
-#   if ask_player == "Hit":
-#     player_value.extend(player_hit_value)
-
-#     # calculate total player value 
-#     for index, score in enumerate(player_value):
-#       total_pl_value += player_value[index]
-      
-  
-#   # if player decide to stand then it stop taking new cards and calculate and total it
-#   elif ask_player == "Stand":
-#     print("not more cards")
-#     for index, score in enumerate(player_value):
-#       total_pl_value += player_value[index]
-#     should_continue_player = False   
-
-#   else:
-#     print("Invalid Input Provide right Input")
 
 
-# should_continue_dealer = True
-
-# total_dealer_value = 0
-# dealer_dash_value[0] = original_value
-
-# blackjack = "blackjack"
-
-# # run while loop until the condition turn inot false
-# while should_continue_dealer == True:
-  
-#   # initial dealer value is added to check some starting condition to win for dealer and player
-#   for index, num in enumerate(dealer_dash_value):
-#     total_dealer_value += num
- 
-#   if total_dealer_value == 21:
-#     print(print_cards())
-#     print(f"The Dealer Won with {blackjack}!")
-#     should_continue_dealer = False
-   
-
-#   elif total_dealer_value <= 17 and total_dealer_value <= 21  :
-#     if total_pl_value < total_dealer_value:
-#       print(f"The Dealer Won with {total_dealer_value}")
-#       should_continue_dealer = False
-   
-#     # here the dealer new card(value) is assigned it 
-#     dealer_dash_value.extend(dealer_hit_value)
-
-#     # now the total dealer points is assigned to zero so further winning condition can be checked.
-#     total_dealer_value = 0
-
-#     # sum total dealer points 
-#     for index, num in enumerate(dealer_dash_value):
-#       if total_dealer_value <= 21 :
-#         total_dealer_value += num
-#       should_continue_dealer = False
-
-      
-#   elif total_dealer_value > 17:
-#     should_continue_dealer = False
-
-# # this function provide the winner that we required.
-# def get_winner(dealer_points = total_dealer_value, player_points = total_pl_value):
-#     clear()
-#     if dealer_points == player_points:
-#       print(print_cards())
-#       print("Both sides have equal points The Game is Tie !")
-
-#     elif total_pl_value == 21:
-#       print(print_cards())
-#       print(f"The Player Won with {blackjack}!")
-  
-
-#     elif player_points > dealer_points and player_points > 21:
-#        print(print_cards())
-#        print("The Player is busted so the Dealer Win!")
-        
-#     elif player_points > dealer_points and player_points < 21:
-#       print(print_cards())
-#       print(f"The Player won with {player_points} points !")
-      
-#     elif dealer_points > player_points and  dealer_points < 21 :
-#       print(print_cards())
-#       print(f"The Dealer won with {dealer_points} points !")
-
-    
-#     elif dealer_points == 21:
-#       print(print_cards())
-#       print("The Dealer Won by Blackjack")
-
-    
-#     elif dealer_points > 21:
-#       print(print_cards())
-#       print("The Dealer is Busted so The Player Won !")
-      
-
-# get_winner(dealer_points = total_dealer_value, player_points = total_pl_value)
-
-  
-  
-    
-  
-  
-  
-  
