@@ -1,187 +1,92 @@
-import art
 import random
 
-def play_Number_guessing_game():
+from art import logo
 
-    """this functions basically start this game every time this function is being called."""
-    level_of_difficulty = {"easy": 10, "moderate": 7, "hard": 5}
 
-    def restarting_Number_Guessing_Game():
-        """this function restart the number guessing game once again"""
+def start_number_guessing():
+    """this function will start the game first time."""
 
-        should_continue = True
-        while should_continue:
-            restart_game = input("Do you want to play this game again?\ntype 'y' for Yes and 'n' for No ").lower()
+    def game_restart():
+        """as per the user input this function will restart the game again by calling start_number_guessing() function again."""
+
+        #this while loop runs until the user don't provide the correct input
+        until_correct_input = True
+        while until_correct_input:
+            restart_game = input("Do you wanna play this game again? type 'y' for yes & 'n' for exit").lower()
 
             if restart_game == 'y':
                 print("\n" * 20)
-                play_Number_guessing_game()
+                start_number_guessing()
 
             elif restart_game == 'n':
-                print("Thank you for playing this game")
+                print("Good bye!")
                 exit()
 
             else:
-                print("Incorrect Input, Please provide correct input!")
-
-    def find_the_answer(left_attempt, correct_answer):
-        """this function find out the correct guess"""
-
-        print(f"You have {left_attempt} attempts remaining to guess the number.")
-        guess = int(input("Make a guess: "))
-
-        if guess == correct_answer:
-            print(f"You got it! The answer was {correct_answer}\n")
-            restarting_Number_Guessing_Game()
-
-        elif guess > correct_answer:
-            print("Too High.")
-
-        elif guess < correct_answer:
-            print("Too Low.")
-
-        else:
-            print("Incorrect Input, Please provide correct input!")
-
-    def choose_difficulty():
-        """this function helps us to decide the difficulty level in which we want to play the game"""
-        difficulty_level = input("Choose a difficulty. Type 'easy', 'moderate' or 'hard': ").lower()
-
-        return  difficulty_level
-
-    print(art.logo)
-    print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
-
-    correct_ans = random.randint(1, 100)
-    print(f"Pssst, the correct answer is {correct_ans}")
-
-    difficulty = choose_difficulty()
-
-    # while loop runs until certain condition didn't became false
-    should_continue = True
-    while should_continue:
-
-    # as per the difficulty level decided by the player find_the_answer functions call and every time a wrong guess is
-    # is guessed then 1 attempt get subtracted if level_of_difficulty[_] became zero then player looses a game
-        if difficulty == "easy":
-
-            find_the_answer(left_attempt = level_of_difficulty["easy"], correct_answer = correct_ans)
-            level_of_difficulty["easy"] -= 1
+                print("Invalid Input, Please provide correct input!")
 
 
-            if level_of_difficulty["easy"] == 0:
-                print("You've run out of guesses, you lose.\n")
-                restarting_Number_Guessing_Game()
-            print("Guess again")
+    def check_correct_guess(remaining_guess):
+        """this function will check, the guessed number by user is correct or not."""
 
-        elif difficulty == "moderate":
+        #this while loop check weather the guess was correct or not and as per that decide user has won the game or not
+        to_get_correct_guess = True
+        while to_get_correct_guess:
 
-            find_the_answer(left_attempt = level_of_difficulty["moderate"],correct_answer =  correct_ans)
-            level_of_difficulty["moderate"] -= 1
+            print(f"You have {remaining_guess} attempts remaining to guess the number.")
 
-            if level_of_difficulty["moderate"] == 0:
-                print("You've run out of guesses, you lose.\n")
-                restarting_Number_Guessing_Game()
-            print("Guess again")
+            number_guessed = int(input("Make a guess: "))
 
-        elif difficulty == "hard":
+            #if guessed number is  high then this if statement will run
+            if number_guessed > random_number:
+                print("Too high.\nTry again.")
+                remaining_guess -= 1
 
-            find_the_answer(left_attempt = level_of_difficulty["hard"],correct_answer =  correct_ans)
-            level_of_difficulty["hard"] -= 1
+            # if guessed number is low then this elif statement will run
+            elif number_guessed < random_number:
+                print("Too low.\nTry again.")
+                remaining_guess -= 1
 
-            if level_of_difficulty["hard"] == 0:
-                print("You've run out of guesses, you lose.\n")
-                restarting_Number_Guessing_Game()
-            print("Guess again")
+            # if guess was correct then this one
+            elif number_guessed == random_number:
+                print(f"You got it!, The answer was {random_number}.\n")
+                game_restart()
 
-        else:
-            print("Incorrect Input, Please provide correct Input!")
-            difficulty = choose_difficulty()
+            # if user is exhaust all his chances to guess the number then this if statement
+            if remaining_guess == 0:
+                print("You've run out of guesses.")
+                game_restart()
+
+    print(logo)
+
+    #random.randint() will give us the random number between 1 and 100
+    random_number = random.randint(1,100)
+    print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.\n")
+    difficulty_level = input(f"Choose a difficulty. Type 'easy', 'medium' or 'hard': ").lower()
+
+    def select_difficulty_level(level):
+        """this function will check that, on which difficulty level user wants to play this game."""
+
+        if level == "easy":
+            number_of_guess = 10
+            check_correct_guess(number_of_guess)
+
+        elif level == "medium":
+            number_of_guess = 7
+            check_correct_guess(number_of_guess)
+
+        elif level == "hard":
+            number_of_guess = 5
+            check_correct_guess(number_of_guess)
+
+        # if user provide invalid input as difficulty level then this elif statement will run and due to recursion it
+        # will trigger the function select_difficulty_level again so it can ask the user to select difficulty level as per provided options.
+        elif level != "hard" or "medium" or "easy":
+            print("Invalid Input!, Please provide correct Input!")
+            difficultyy_level = input(f"Choose a difficulty. Type 'easy', 'medium' or 'hard': ").lower()
+            select_difficulty_level(difficultyy_level)
 
 
-play_Number_guessing_game()
+    select_difficulty_level(difficulty_level)
 
-
-
-#_______________________________________________old_number_guessing_code_created_previously___________________________________________
-
-# #Number Guessing Game Objectives:
-
-# from art import logo
-# import random
-# from replit import clear
-
-
-# Number = random.randint(1, 100)
-# chances = [11, 6]
-
-
-# # definning fucntion to start the game
-# def start_game(Number):
-#     print(logo)
-#     print("Welcome to the Number Guessing Game!")
-#     print("I'm thinking of a number between 1 to 100.")
-
-#     # definning function to restart the game
-#     def Restart():
-#         restart = input(
-#             "Do you want to play another game! type 'y' or 'n'").title()
-
-#         # if restart = y then it clear screen and call start_game(Number) function to restart game
-#         if restart == "Y":
-#             clear()
-#             print("\n")
-#             start_game(Number)
-
-#         # print game over after if restart = n
-#         elif restart == "N":
-#             clear()
-#             print("\nGame Over!")
-
-#     # definning the get winner fucntion which can provide the winner 
-#     def get_winner(left_chances, answer):
-
-#         should_continue = True
-#         while should_continue == True:
-          
-#             # substract chances so if game is over then provide the output
-#             left_chances = left_chances - 1
-#             if left_chances == 0:
-#                 print("Game Over, you lost all chances to guess the anwser.")
-#                 Restart()
-#                 should_continue = False
-
-#             # if left chances are greater than zero runs until it became zero and than stop
-#             elif left_chances > 0:
-#                 print(f"You have {left_chances} left to guess a number. ")
-#                 guess = int(input("Make a guess:"))
-
-#                 if guess > answer:
-#                     print("Too High, Try Again.")
-
-#                 elif guess < answer:
-#                     print("Too Low, Try Again.")
-      
-#                 elif guess == answer:
-#                     print(f"You got it, the actual answer is {Number}")
-#                     Restart()
-#                     should_continue = False
-
-#     # here user decide difficulty of the game
-#     decide_difficulty = input(
-#         "Choose a difficulty type 'easy' or 'hard':").title()
-
-#     if decide_difficulty == "Easy":
-#         get_winner(left_chances=chances[0], answer=Number)
-
-#     elif decide_difficulty == "Hard":
-#         get_winner(left_chances=chances[1], answer=Number)
-
-#     else:
-#         clear()
-#         print(logo)
-#         print("Invalid Input, Try Again!")
-#         start_game(Number)
-
-# # calling the function and starting the game
-# start_game(Number)
+start_number_guessing()
