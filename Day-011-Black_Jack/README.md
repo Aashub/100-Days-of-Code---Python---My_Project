@@ -12,7 +12,7 @@ This Blackjack game is a console-based Python project where the user plays again
 - The result is then displayed based on who has a score closer to 21 without going over.
 - After each round, the user is given the option to restart or exit the game.
 
-## Project Highlights
+## Code Highlights
 - **Functions with Docstrings**: Each part of the logic is written as a separate function with clear explanations using docstrings.
 - **Recursion**: The game uses recursion to restart the game smoothly without breaking the loop.
 - **Dictionaries**: Used to store and manage the player's and dealer's cards and scores.
