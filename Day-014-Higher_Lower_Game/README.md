@@ -1,35 +1,22 @@
-# Day 14 - Higher or Lower Game
 
-## Overview
-The **Higher or Lower Game** is a fun comparison game where players guess which of two Instagram accounts has more followers. The game continues as long as the player guesses correctly, with the score increasing for each correct answer. It ends when the player makes an incorrect guess.
+# Day 14 - Higher Lower Game
 
-## Key Features
-- **Random Selection**: Uses `random.choice()` to select random Instagram profiles from a dataset.
-- **Comparison Logic**: Compares the follower counts of two profiles based on user input ('A' or 'B').
-- **Score Tracking**: Keeps track of the player's score and displays it after each correct guess.
-- **Terminal Clearing**: Includes a function to clear the terminal screen for a cleaner user experience.
+## Project Overview  
+This project is a console-based guessing game inspired by the concept of comparing social media follower counts. It was built as part of Day 14 of the #100DaysOfCode challenge. The goal of this game is to test your guessing skills by choosing between two public figures and deciding who has more followers.
 
-## Game Logic
-1. **Profile Selection**:
-   - Two random profiles are chosen from the dataset.
-   - If the profiles are the same, a new profile is selected for comparison.
-2. **Display Information**:
-   - Shows details of "Account A" and "Account B" (name, description, country).
-   - The player guesses which profile has more followers.
-3. **Compare Followers**:
-   - The `compare()` function checks if the player's guess is correct by comparing follower counts.
-   - If the guess is correct, the score increases, and the player continues with a new comparison.
-   - If the guess is incorrect, the game ends, and the final score is shown.
-4. **Clearing Terminal**:
-   - The `clear()` function is used to clear the terminal screen after each round for better readability.
+## How It Works  
+- The game starts by displaying two public figures with basic details like name, profession, and country.  
+- You have to guess which one has more followers by typing 'A' or 'B'.  
+- If your guess is correct, you score a point and move on to the next round.  
+- The second figure becomes the first for the next round, and a new figure is randomly selected for comparison.  
+- If the guess is wrong, the final score is displayed and you are asked if you want to restart the game.  
+- The game continues until the player chooses to exit or makes an incorrect guess.
 
-## How to Play
-1. Run the script.
-2. Guess which profile has more followers by typing 'A' or 'B'.
-3. Continue guessing correctly to increase your score.
-4. The game ends when you make an incorrect guess, and your final score is displayed.
+## Code Highlights  
+- **compare_a() and compare_b():** Functions that randomly select and display public figures from the data set.  
+- **shuffle_compare():** Moves Compare B to Compare A and selects a new Compare B for the next round.  
+- **Score Management:** Keeps track of the user’s score and displays it after each correct guess.  
+- **Restart Functionality:** Asks the user if they want to play again after a wrong guess.  
+- **Input Validation:** Ensures the user types only valid responses like 'a', 'b', 'y', or 'n'.
 
-## Improvements
-- **More Profiles**: Add additional data to enhance variety in comparisons.
-- **Leaderboard**: Implement a feature to track and display high scores.
-- **GUI Version**: Create a graphical version of the game for a better user experience.
+--- 
