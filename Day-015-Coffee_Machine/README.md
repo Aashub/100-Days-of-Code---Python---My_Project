@@ -1,38 +1,29 @@
-# Day 15 - Coffee Machine Program  
+# Day 15 - Coffee Machine Project
 
-## Overview  
-The **Coffee Machine Program** is a Python application that simulates the operations of a coffee vending machine. It allows users to choose their preferred coffee, ensures resources are available, processes coin transactions, and updates the machine's resources and profits. This project consolidates various programming concepts such as functions, loops, conditionals, and error handling.  
-
----
-
-## Key Features  
-1. **Coffee Options**:  
-   - Users can select from three coffee options: espresso, latte, and cappuccino.  
-2. **Resource Management**:  
-   - Checks if the machine has enough water, milk, and coffee to prepare the selected beverage.  
-3. **Coin Transactions**:  
-   - Accepts quarters, dimes, nickels, and pennies to process payments.  
-   - Calculates the total amount inserted and ensures it covers the coffee's cost.  
-   - Provides change if overpaid.  
-4. **Profit Tracking**:  
-   - Tracks the total money earned from coffee sales.  
-5. **Reports**:  
-   - Displays the current status of water, milk, coffee, and money in the machine.  
-6. **Error Handling**:  
-   - Includes a `try-except` block to catch invalid inputs or errors.  
+## Project Overview
+This Coffee Machine Project is a Python console application that simulates a real-world coffee vending machine. Where Users can select a drink, by insert coins, and get their beverage if the machine has enough resources and correct payment has been done. This project is all about to implement all the Python concepts I have learned so far, including dictionaries, functions, conditionals, loops, exception handling, and arithmetic, to manage user input, process payments, and update resources(inventory) and profits, for espresso, latte, and cappuccino orders.
 
 ---
 
-## How It Works  
-1. **User Input**:  
-   - The user selects an option: espresso, latte, cappuccino, "report," or "off."  
-2. **Report**:  
-   - Displays the machine's current resource levels and total profit.  
-3. **Coffee Selection**:  
-   - Checks if resources are sufficient for the selected coffee.  
-   - Processes coin transactions and updates resources if the transaction is successful.  
-4. **Error Handling**:  
-   - Prompts the user to enter valid input if an error occurs.  
-5. **Exit**:  
-   - Typing "off" ends the program.  
+## How It Works
+
+- User Interaction: The user selects a coffee (espresso, latte, cappuccino), views available resources by typing report, or turns off the machine with off.
+- Displaying Resources: The machine shows the current available resources, including the amount of water, milk, coffee, and the total profit accumulated.
+- Checking Resources: Before making the coffee, the program checks if there are enough ingredients (water, milk, and coffee) to fulfill the user’s request.
+- Accepting Coins: The program prompts the user to insert coins in (quarters, dimes, nickels, and pennies). The total money inserted is calculated by adding up the values of the coins entered.
+- Processing Payments: Once the coins are inserted, the program checks if the total amount matches the cost of the selected coffee. If the user has inserted more than required, it calculates the refund (change) that needs to be given back.
+- Serving the Coffee: If the inserted payment is sufficient and resources are available, the coffee is served. A message is displayed to confirm the coffee is ready, and any necessary change is returned to the user.
+
+
+---
+
+## Project Highlights
+
+- **Modular Functions**: Each task is handled by its own function (`check_resources`, `process_coins`, `resource_deducted`), making the code clean and easy to maintain.
+- **Input Handling**: Used `try` and `except` to ensure valid coin inputs, preventing crashes from invalid types.
+- **REsource Tracking**: Tracks ingredients and automatically updates after each transaction.
+- **Profit Calculation**: Tracks total profit from coffee sales.
+
+---
+
 
