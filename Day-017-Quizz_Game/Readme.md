@@ -1,4 +1,4 @@
-# Day-17 Quiz Game Project
+# Day 17 - Quiz Game Project
 
 ## Project Overview
 In this project, I have applied everything I learned in Day 17.
