@@ -1,25 +1,24 @@
-from data import question_data
 from question_model import Question
-from quiz_brain import QuizzBrain
-
-
+from data import question_data
+from quiz_brain import QuizBrain
 
 question_bank = []
 
-for index, item in enumerate(question_data):
+# this for loop will create object and store all the question and answer object in a list(question bank)
+for to_store_question in question_data:
+    new_question = Question(to_store_question["question"], to_store_question["correct_answer"])
 
-     question_text = question_data[index]["question"]
-     question_answer = question_data[index]["correct_answer"]
+    question_bank.append(new_question)
 
-     new_question = Question(question_text, question_answer)
-     question_bank.append(new_question)
+#this object will take question_bank input and store it into the question_list attribute in a QuizBrain class
+ask_question = QuizBrain(q_list=question_bank)
+
+# here we are calling one of the method o Quiz brain so we can iterate to next question and also find out the answer and
+# and their total score.
+ask_question.next_question(ask_question.question_list, ask_question.question_number)
 
 
-quiz = QuizzBrain(question_bank)
-should_continue = True
 
-while quiz.still_has_question():
 
-     quiz.next_question()
 
-print(f"You compeleted the Quizz.\n Your final score was: {quiz.current_score}/{quiz.question_number}")
+
