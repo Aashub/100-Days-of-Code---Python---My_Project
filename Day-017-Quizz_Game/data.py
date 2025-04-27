@@ -1,103 +1,56 @@
 question_data = [
-
-        {
-            "category": "Mythology",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "In Norse mythology, Thor once dressed as a woman.",
-            "correct_answer": "True",
-            "incorrect_answers": [
-                "False"
-            ]
-        },
-        {
-            "category": "Geography",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "Greenland is almost as big as Africa.",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        },
-        {
-            "category": "Geography",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "Vatican City is a country.",
-            "correct_answer": "True",
-            "incorrect_answers": [
-                "False"
-            ]
-        },
-        {
-            "category": "Entertainment: Music",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "American rapper Dr. Dre actually has a Ph.D. doctorate.",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        },
-        {
-            "category": "Science: Mathematics",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "The &#039;Squaring the Circle&#039; problem is solvable.",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        },
-        {
-            "category": "Entertainment: Japanese Anime & Manga",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "In Kill La Kill, the weapon of the main protagonist is a katana. ",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        },
-        {
-            "category": "Entertainment: Video Games",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "In Team Fortress 2, being disguised as a scout or medic results in a speed boost.",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        },
-        {
-            "category": "Entertainment: Music",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "Scatman John&#039;s real name was John Paul Larkin.",
-            "correct_answer": "True",
-            "incorrect_answers": [
-                "False"
-            ]
-        },
-        {
-            "category": "Entertainment: Japanese Anime & Manga",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "Kiznaiver is an adaptation of a manga.",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        },
-        {
-            "category": "Entertainment: Video Games",
-            "type": "boolean",
-            "difficulty": "easy",
-            "question": "In Heroes of the Storm, the Cursed Hollow map gimmick requires players to kill the undead to curse the enemy team.",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        }
-]
+    {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Peter Molyneux was the founder of Bullfrog Productions.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "There are 6 legendary cards in &quot;Clash Royale&quot;.",
+      "correct_answer": "False", "incorrect_answers": ["True"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "&quot;Resident Evil 7&quot; is the first first-person Resident Evil game.",
+      "correct_answer": "False", "incorrect_answers": ["True"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "In Pok&eacute;mon, Bulbasaur is the only starter pokemon that is a Grass\/Poison type.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Rollercoaster Tycoon 1 and 2 were developed by Chris Sawyer.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Solid Snake is actually a clone from the DNA of Big Boss in the Metal Gear Solid series&#039; history.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Several characters in &quot;Super Mario 64&quot; blink their eyes, including Mario himself.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Tony Hawk&#039;s extreme sports videogames revolve around performing professional BMX tricks.",
+      "correct_answer": "False", "incorrect_answers": ["True"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Watch_Dogs 2 is a prequel.", "correct_answer": "False",
+      "incorrect_answers": ["True"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Ana was added as a new hero for the game Overwatch on July 19th, 2016.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Codemasters is the developer of the Gran Turismo series.",
+      "correct_answer": "False", "incorrect_answers": ["True"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Activision created Battlefield 1.", "correct_answer": "False",
+      "incorrect_answers": ["True"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "In Team Fortress 2, being disguised as a scout or medic results in a speed boost.",
+      "correct_answer": "False", "incorrect_answers": ["True"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "In the video game &quot;Splatoon&quot;, the playable characters were originally going to be rabbits instead of squids.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "&quot;Undertale&quot; is an RPG created by Toby Fox and released in 2015.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "In &quot;Super Mario 3D World&quot;, the Double Cherry power-up originated from a developer accidentally making two characters controllable.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "In the game Dead by Daylight, the killer Michael Myers is refered to as &quot;The Shape&quot;.",
+      "correct_answer": "True", "incorrect_answers": ["False"]},
+     {"type": "boolean", "difficulty": "easy", "category": "Entertainment: Video Games",
+      "question": "Nintendo&#039;s Luigi was originally just called Green Mario?",
+      "correct_answer": "False", "incorrect_answers": ["True"]}
+   ]
