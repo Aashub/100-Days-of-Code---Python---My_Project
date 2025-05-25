@@ -1,4 +1,4 @@
-  # Day-19 Turtle Race Game 
+  # Day 19 - Turtle Race Game 
 
 ## Project Overview
 In this project, I have created a Turtle Race Game using the turtle graphics module in Python.
