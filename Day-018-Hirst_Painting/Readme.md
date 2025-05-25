@@ -1,5 +1,5 @@
 
-# Day-18 Hirst Painting Project
+# Day 18 - Hirst Painting Project
 
 
 ##  Project Overview
