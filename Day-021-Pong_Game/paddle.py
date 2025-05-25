@@ -2,23 +2,33 @@ from turtle import Turtle
 
 
 class Paddle(Turtle):
+    """here we are inheriting from turtle class so we can use its method and attribute to create our modified methods and attributes"""
 
-    def __init__(self, position):
+    def __init__(self):
         super().__init__()
-        self.shape("square")
+
         self.color("white")
         self.penup()
-        self.shapesize(stretch_wid=4, stretch_len=1)
-        self.goto(position)
+        self.shape("square")
+        self.shapesize(stretch_wid=5, stretch_len=1)
+
+    def up(self):
+        """this function will help us to move our paddle up"""
+        ycor = self.ycor() + 20
+        self.goto(self.xcor(), ycor)
+
+    def down(self):
+        """this function will help us to move our paddle up"""
+        ycor = self.ycor() - 20
+        self.goto(self.xcor(), ycor)
 
 
-    def Go_up(self):
 
-        y_cor = self.ycor() + 20
-        self.goto(self.xcor(), y_cor)
 
-    def Go_down(self):
-        y_cor = self.ycor() - 20
-        self.goto(self.xcor(), y_cor)
+
+
+
+
+
 
 
