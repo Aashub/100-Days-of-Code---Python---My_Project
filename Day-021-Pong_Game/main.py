@@ -1,55 +1,81 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from paddle import Paddle
 from ball import Ball
-from scoreboard import Scoreboard
-import time
+from scoreboard import Score
 
+# time module will help us to reduce the loop speed which help us to increase or decrease ball speed.
+import  time
+
+# here we are creating objects of our all classes
 screen = Screen()
-screen.setup(width=800,height=600)
+winner = Turtle()
+paddle_l = Paddle()
+ball = Ball()
+score = Score()
+
+
+# here we are setting the position of our paddle
+paddle_l.goto(-390, 0)
+paddle_r = Paddle()
+paddle_r.goto(380, 0)
+
+# here we are setting the width and height of our gaming screen
+screen.setup(width=800, height= 600)
 screen.bgcolor("black")
 screen.tracer(0)
 
-
-r_paddle = Paddle((350,0))
-l_paddle = Paddle((-350,0))
-ball = Ball()
-score = Scoreboard()
-
-
-
+#here we are using onkey function so whenever player gives an valid input paddle will move up and down
 screen.listen()
-screen.onkey(r_paddle.Go_up,"w")
-screen.onkey(r_paddle.Go_down,"s")
+screen.onkey(key= "r", fun= paddle_l.up)
+screen.onkey(key= "d", fun= paddle_l.down)
+screen.onkey(key= "Up", fun= paddle_r.up)
+screen.onkey(key= "Down", fun= paddle_r.down)
+speed_up = 0.10
 
-screen.onkey(l_paddle.Go_up, "Up")
-screen.onkey(l_paddle.Go_down, "Down")
+game_is_on = True
+while game_is_on:
 
+    ball.movement()
 
-is_game_on = True
-
-while is_game_on:
-    time.sleep(ball.move_speed)
-    screen.update()
-    ball.Ball_move()
-
-    # when ball collide to the wall bounce back
+    # whenever ball passes this coordinate in a screen of y axis ball will bounce back
     if ball.ycor() > 280 or ball.ycor() < -280:
-        ball.y_bounce()
+        ball.bounce_y()
 
-    # when ball hit the paddle then it bounce back
-    if ball.distance(r_paddle)  < 50  and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330:
-        ball.x_bounce()
+    # whenever ball distance with paddle is less than 50px and ball coordinate is greater than 355 than this if statement
+    # and ball will bounce back from paddle
+    if ball.distance(paddle_r) < 50 and ball.xcor() > 355 or ball.distance(paddle_l) < 50 and ball.xcor() < -355:
+        ball.bounce_x()
+        speed_up -= 0.01
 
-    #when right side misses
+    # when r_paddle miss the score points go to l_paddle
     if ball.xcor() > 390:
+        score.l_score += 1
+        score.update_screen()
         ball.reset_position()
-        score.L_score()
+        speed_up = 0.10
 
-    #when left side misses
+
+    # when l_paddle miss the score points go to r_paddle
     if ball.xcor() < -390:
+        score.r_score += 1
+        score.update_screen()
         ball.reset_position()
-        score.R_score()
+        speed_up = 0.10
 
+    # whichever paddle reaches 10 first will win the game
+    if score.l_score == 10 or score.r_score == 10:
+        winner.color("white")
+        winner.hideturtle()
+        winner.penup()
+        if score.r_score == 10:
+            winner.write(f"right paddle wins!", align="center", font=("Arial", 24, "normal"))
+        if score.l_score == 10:
+            winner.write(f"left paddle wins!", align="center", font=("Arial", 24, "normal"))
 
+        ball.hideturtle()
+        game_is_on = False
+
+    time.sleep(speed_up)
+    screen.update()
 
 screen.exitonclick()
