@@ -1,50 +1,64 @@
 from turtle import Screen
-import time
-from snake import  Snake
-from food import Food
-from score import  Score
+from snake import Snake
+from food import  Food
+from score import Score
 
+import  time
 screen = Screen()
-screen.setup(width=600, height=500)
+
+#here we have mentioned basic details of our snake games like screen width and screen color.
+screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake Game")
 screen.tracer(0)
 
-
+# here we have created object from all the classes that we are going to use to call the methods so our game can
+#perform all the functionality
 snake = Snake()
+snake_food = Food()
 score = Score()
-screen.onkey(snake.up,"Up")
-food  = Food()
 
+snake.snake_object()
+snake.snake_body()
+
+# here we are binding keys so whenever the user press the key our snake can move into specific direction.
 screen.listen()
-screen.onkey(snake.down,"Down")
-screen.onkey(snake.left,"Left")
-screen.onkey(snake.right,"Right")
+screen.onkey(key="Up", fun= snake.up)
+screen.onkey(key="Down", fun= snake.down)
+screen.onkey(key="Left", fun= snake.left)
+screen.onkey(key="Right", fun= snake.right)
 
-
-is_game_on  = True
-
-while is_game_on:
+# here loop will run until the condition doesn't became false
+game_is_on = True
+while game_is_on:
+    screen.update()
 
     time.sleep(0.1)
-    screen.update()
-    snake.Move()
-
-    #when collide with the food
-    if snake.head.distance(food) < 14:
-        food.get_location()
+    # here we are checking that if snake head distance with food is less than 15 than we will refresh the food
+    # so it can go to different location and snake body size also increases and score also increases
+    if snake.snake_list[0].distance(snake_food) < 15:
+        snake_food.refresh()
         snake.extend()
-        score.track_score()
 
-    #detect collision when hit wall
-    if snake.head.xcor() > 285 or snake.head.xcor() < -290 or snake.head.ycor() < -240 or snake.head.ycor() > 235:
-        is_game_on = False
-        score.game_over()
+        #whenever this if statement will executed then score.increase_score will increase the score by one in score class method
+        score.increase_score += 1
+        score.clear()
+        score.score_card()
 
+    #detect collision with wall
+    if snake.snake_list[0].xcor() > 270 or snake.snake_list[0].xcor() < -270 or snake.snake_list[0].ycor() > 255 or snake.snake_list[0].ycor() < -270:
+        score.reset_score()
+        score.score_card()
+        snake.reset_snake_body()
 
-    for segments in snake.snake_list[1:]:
+    #detect collision with tail
+    #if head collides with own body then trigger game over
+    for body_part in snake.snake_list[1:]:
+        if snake.snake_list[0].distance(body_part) < 10:
+            score.reset_score()
+            score.score_card()
+            snake.reset_snake_body()
 
-        if snake.head.distance(segments) < 10:
-            is_game_on = False
-            score.game_over()
+    snake.snake_movement()
+
 screen.exitonclick()
