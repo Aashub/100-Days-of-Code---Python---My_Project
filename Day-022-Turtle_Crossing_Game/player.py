@@ -1,25 +1,31 @@
-STARTING_POSITION = (0, -280)
-MOVE_DISTANCE = 10
-FINISH_LINE_Y = 280
 from turtle import Turtle
 
-class Player(Turtle):
+TURTLE_COD = (0, -230)
+
+class Turtle(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.shape("turtle")
-        self.setheading(90)
-        self.shapesize(stretch_wid=1.5, stretch_len=1.5)
+
         self.penup()
-        self.setpos(STARTING_POSITION)
+        self.goto(TURTLE_COD)
+        self.shape("turtle")
+        self.color("green")
+        self.shapesize(1.5)
+        self.setheading(90)
 
-    # move turtle with distance of 10
-    def Move(self):
 
-        ycor = self.ycor()  + MOVE_DISTANCE
+    def turtle_up(self):
+        """this function will move the turtle in up direction"""
+
+        ycor = self.ycor() + 5
         self.goto(self.xcor(), ycor)
 
+    def turtle_down(self):
+        """this function will move the turtle in down direction"""
 
+        ycor = self.ycor() - 10
+        self.goto(self.xcor(), ycor)
 
 
 
