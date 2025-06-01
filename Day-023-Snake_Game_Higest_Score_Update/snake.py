@@ -1,74 +1,78 @@
-import turtle
-from turtle import Screen, Turtle
+from turtle import Turtle
 
-
-screen = Screen()
-STARTING_POSITION = [(0,0),(-20,0),(-40,0)]
-MOVE_DISTANCE= 20
+MOVE_DISTANCE = 20
 UP = 90
 DOWN = 270
 LEFT = 180
-RIGHT =0
+RIGHT = 0
 
-
-# snake class that make use in main file
 class Snake:
-
+    """this class main functionality is that it creates snake and increases snake size whenever it eats food"""
     def __init__(self):
-
         self.snake_list = []
-        self.Create_Snake()
-        self.head = self.snake_list[0]
+        self.x_axis = 0
 
-    # this method create snake
-    def Create_Snake(self):
+        self.y_axis = 0
 
-        """create  square turtle object give them color provide them coordinate so they can align """
-        for postion in STARTING_POSITION:
-           self.add_segment(postion)
+    def snake_object(self):
+        """this function create objects for snake body and also add them in a list."""
+        for body_part in range(3):
+            snake = Turtle("square")
+            snake.penup()
+            snake.color("white")
+            self.snake_list.append(snake)
 
-    def add_segment(self, position):
-        snake = Turtle(shape="square")
-        snake.color("white")
-        snake.penup()
-        snake.goto(position)
-        self.snake_list.append(snake)
+    def snake_body(self):
+        """this function align the snake body in a certain location so they snake actually looks like a snake."""
+        for snake_body in self.snake_list:
+            snake_body.penup()
+            snake_body.goto(self.x_axis, self.y_axis)
+            self.x_axis -= 20
 
-        """increase the size of of snake """
+
+    def reset_snake_body(self):
+        """this function reset our snake to its initial size and also put the previous snake into new random location so they don't appear """
+        for snake_body in self.snake_list:
+            snake_body.goto(1000,1000)
+        self.snake_list.clear()
+        self.snake_object()
+
+
+
     def extend(self):
-        self.add_segment(self.snake_list[-1].position())
+        """this function will increase the snake size by creating a new object of snake and appending it into a list
+        and adding them into a end of body."""
+        snake_extend = Turtle("square")
+        snake_extend.color("white")
+        snake_extend.penup()
+        snake_extend.goto(self.x_axis, self.y_axis)
+        self.snake_list.append(snake_extend)
 
+    def snake_movement(self):
+        """this function will help the snake to move in any direction without losing its body, so whenever snake head
+        make any turn other snake body also take turns"""
+        for set_num in range(len(self.snake_list)-1, 0, -1):
+            new_x = self.snake_list[set_num - 1].xcor()
+            new_y = self.snake_list[set_num - 1].ycor()
+            self.snake_list[set_num].goto(new_x, new_y)
+        self.snake_list[0].forward(MOVE_DISTANCE)
 
-
-    # provide move functionality to how to move it
-    def Move(self):
-
-        """run from last element to initial and so it can move in the form that it can change direction"""
-        """3 come on 2 next time 2 goes to 1 and 1 goes to whereever direction decided this process continue and it can move forward"""
-
-        for move in range(len(self.snake_list) - 1,0,-1):
-            xcor = self.snake_list[move - 1].xcor()
-            ycor = self.snake_list[move - 1].ycor()
-
-            self.snake_list[move].goto(xcor,ycor)
-
-        self.head.forward(MOVE_DISTANCE)
+    # below four function will help us to move snake into all four direction with also preventing the condition of
+    # not coming back word because snake can move only forward.
 
     def up(self):
-        if self.head.heading() != DOWN:
-             self.head.setheading(UP)
+        if self.snake_list[0].heading() != DOWN:
+            self.snake_list[0].setheading(UP)
 
     def down(self):
-        if self.head.heading() != UP:
-            self.head.setheading(DOWN)
+        if self.snake_list[0].heading() != UP:
+            self.snake_list[0].setheading(DOWN)
 
     def left(self):
-        if self.head.heading() != RIGHT:
-            self.head.setheading(LEFT)
+        if self.snake_list[0].heading() != RIGHT:
+            self.snake_list[0].setheading(LEFT)
 
     def right(self):
-        if self.head.heading() != LEFT:
-            self.head.setheading(RIGHT)
-
-
+        if self.snake_list[0].heading() != LEFT:
+            self.snake_list[0].setheading(RIGHT)
 
