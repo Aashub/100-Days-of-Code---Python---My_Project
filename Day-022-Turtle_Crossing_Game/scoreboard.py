@@ -1,32 +1,32 @@
-FONT = ("Courier", 24, "normal")
-from turtle import Turtle
+from turtle import  Turtle
 
-class Scoreboard(Turtle):
-
+class Level(Turtle):
+    """here we are creating level for our turtle crossing game"""
     def __init__(self):
         super().__init__()
-        self.color("white")
-        self.penup()
+
         self.hideturtle()
-        self.Level = 1
-        self.update_scoreboard()
+        self.color("black")
+        self.penup()
+        self.goto(-330, 220)
+        self.score = 0
 
-    #align the level on the screen and update it
-    def update_scoreboard(self):
+    def write_score(self):
+        """this method will display the level of player."""
         self.clear()
-        self.goto(-230, 250)
-        self.write("Level: ", align="center", font= FONT)
-        self.goto(-170, 250)
-        self.write(self.Level, align="center", font=FONT)
+        self.write(arg=f"Level:{self.score}",move=False,font=("Arial",15,"normal"))
 
-    # increase the level by 1
-    def Score(self):
-        self.Level += 1
-        self.update_scoreboard()
+    def game_over(self):
+        """this function will execute whenever turtle hits the game and game over happens to show game is over."""
+        self.hideturtle()
+        self.color("black")
+        self.penup()
+        self.goto(-50, 0)
+        self.write(arg=f"Game Over", move=False, font=("Arial", 15, "normal"))
 
 
-    def Game_Over(self):
 
-        self.goto(0,0)
-        self.write("Game Over!", align="center", font=  FONT )
+
+
+
 
