@@ -1,50 +1,95 @@
 import random
+from turtle import Turtle
+from random import randint
 
-COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-LEVEL1 = 4
-LEVEL2 = 8
-LEVEL3 =  12
+EASY = ["red", "blue", "green", "yellow", "orange"]
+MODERATE = ["red", "blue", "green", "yellow", "orange", "purple", "black"]
+HARD =  ["red", "blue", "green", "yellow", "orange", "purple", "black", "black", "cyan", "magenta"]
 
-DISTANCE_BETWEEN_CAR = 35
-
-from turtle import  Turtle
-
-
-class CarManager():
+class Cars:
+    """this class main purpose is to create cars and move them"""
 
     def __init__(self):
+
         self.car_list = []
+        self.score = 0
+        self.increase_speed = 10
+        self.slow_creation = 0
 
-    # Create the cars
-    def Car(self):
 
-        car = Turtle()
-        car.shape("square")
-        car.shapesize(stretch_wid=1, stretch_len=2)
-        car.color(random.choice(COLORS))
-        car.penup()
-        car.setheading(180)
+    def create_cars(self):
+        """this function is being used to create cars for the game."""
 
-        # create the random distance between each car
-        xcor = 260 + len(self.car_list) * DISTANCE_BETWEEN_CAR
-        car.setpos(xcor,random.randint(-250,250))
-        self.car_list.append(car)
+        #this if else statement is used to reduce the creation of cars.
+        if self.slow_creation % 2 == 0:
+            car = Turtle()
+            car.shape("square")
+            car.penup()
+            car.shapesize(stretch_wid=1, stretch_len=2)
+            car.goto(random.randint(360, 500), random.randint(-200, 250))
+            car.color(random.choice(HARD))
+            self.car_list.append(car)
 
-    #car speed increases when turtle crosses the road
-    def Level_1(self):
 
-        for index in self.car_list:
-            xcor = index.xcor() - LEVEL1
-            index.goto(xcor, index.ycor())
 
-    def Level_2(self):
+    def car_movement(self):
+        """this function objective is to move cars """
 
-        for index in self.car_list:
-            xcor = index.xcor() - LEVEL2
-            index.goto(xcor, index.ycor())
+        for moving_car in self.car_list:
+            xcor = moving_car.xcor() - self.increase_speed
+            moving_car.goto(xcor, moving_car.ycor())
 
-    def Level_3(self):
+        self.create_cars()
 
-        for index in self.car_list:
-            xcor = index.xcor() - LEVEL3
-            index.goto(xcor, index.ycor())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
