@@ -1,45 +1,56 @@
-import time
 from turtle import Screen
-from player import Player
-from car_manager import CarManager
-from scoreboard import Scoreboard
+from TURTLE import Turtle
+from cars import Cars
+from level import Level
+import time
+
 
 screen = Screen()
+cars = Cars()
 
-screen.setup(width=600, height=600)
-screen.tracer(0)
-screen.bgcolor("gray")
-player = Player()
-car_manager = CarManager()
-scoreboard = Scoreboard()
-# listen key is important to make work of onkey function
+screen.tracer(0.1)
+
+timmy = Turtle()
+
+# here we are setting up the screen size
+screen.setup(width=700, height= 500)
+screen.title("Turtle Crossing Game")
+
+# this function listen the key and as per that input turtle moves up and down,
 screen.listen()
-screen.onkey(player.Move,"w")
+screen.onkey(fun=timmy.turtle_up, key="Up")
+screen.onkey(fun=timmy.turtle_down, key="Down")
 
-#game continue until game_is_on = False
+score_lvl = Level()
+score_lvl.write_score()
+
+cars.create_cars()
 game_is_on = True
+
+#while loop will run until the turtle don't hit the car and game don't become "game over"
 while game_is_on:
-    car_manager.Car()
-    time.sleep(0.1)
 
-    # when car collided with turtle then game is over
-    for car in car_manager.car_list:
-
-        if player.distance(car) < 35:
-            scoreboard.Game_Over()
+    #here when each car distance will become less than 35 then game stops and game over happens
+    for car in cars.car_list:
+        if car.distance(timmy) < 35:
+            score_lvl.game_over()
             game_is_on = False
 
-    car_manager.Level_1()
-    # when turtle hit the edge increase the car speed
-    if scoreboard.Level == 2:
-        car_manager.Level_2()
-    elif scoreboard.Level == 3:
-        car_manager.Level_3()
-    screen.update()
+    # here cars will move forward until the turtle coordinates are less than 260 in y axis
+    if timmy.ycor() < 250:
+        cars.car_movement()
+        cars.slow_creation += 1
 
-    #when turtle hit the top edge increase level by reseting coordinate
-    if player.ycor() == 290:
-        player.setpos(0,-280)
-        scoreboard.Score()
+    # if turtle crosses y axis above 260 then here we can increaes its speed in next level and as per that we are writing
+    # its current level.
+    elif timmy.ycor() > 260:
+        timmy.goto(0,-230)
+        cars.increase_speed *= 1.5
+        score_lvl.score += 1
+        score_lvl.write_score()
+
+
+    time.sleep(0.5)
+    screen.update()
 
 screen.exitonclick()
