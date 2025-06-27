@@ -1,38 +1,15 @@
-from binstar_client.pprintb import user_list
-from docutils.utils.math.latex2mathml import letters
-
-student_dict = {
-    "student": ["Angela", "James", "Lily"], 
-    "score": [56, 76, 98]
-}
-
-#Looping through dictionaries:
-# for (key, value) in student_dict.items():
-#     print(key)
-#     print(value)
-
 import pandas
-# student_data_frame = pandas.DataFrame(student_dict)
 
-#Loop through rows of a data frame
-# for (index, row) in student_data_frame.iterrows():
-#     print(row.student)
-#     print(row.score)
-
-# Keyword Method with iterrows()
-# {new_key:new_value for (index, row) in df.iterrows()}
-
-#TODO 1. Create a dictionary in this format:
-# {"A": "Alfa", "B": "Bravo"}
-
+# here we are reading the csv file by using pandas module so we can retreive the data
 nato_details = pandas.read_csv("nato_phonetic_alphabet.csv")
 
+# here we are creting a dictionary using dictionary comprehension which where each letter will contain its NATO code example(A" Alpha)
 new_dict = {row.letter:row.code for (index, row) in nato_details.iterrows()}
-
-#TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
 
 user_input = input("Enter a word: ").upper()
+
+# here we are creating a new list which will contain a NATO code of each alphabet character which was given by usre
 new_list = [new_dict[char] for char in user_input if char in new_dict]
 
 print(new_list)
