@@ -1,0 +1,98 @@
+# 🚀 Miles to Km Converter (Day 27 of #100DaysOfCode)
+
+Welcome to my Day 27 project of the #100DaysOfCode challenge! This is a **Miles to Kilometer Converter** built using Python's **Tkinter** library. It's a simple GUI-based application where the user can input a value in miles, click a button, and instantly get the converted value in kilometers.
+
+---
+
+## 🧠 Project Overview
+
+This project is a beginner-friendly **Graphical User Interface (GUI)** tool where:
+
+* The user types in a number representing miles.
+* Clicks the “Calculate” button.
+* The program then takes that input, converts it into kilometers using the formula `1 mile = 1.60934 km`, and displays the result on the screen.
+
+To build this project, I explored the **Tkinter** library, which is used to create GUI applications in Python. I learned how to build windows, add buttons, text fields, labels, and handle user events.
+
+---
+
+## 📚 What I Learned
+
+Here are the key things I learned while building this project, explained in simple and human language:
+
+* **`Tk()`**: This initializes the main window where everything in the GUI appears. It's the base of the GUI.
+
+* **`Label()`**: Used to display static text on the screen like "Miles", "Km", and "is equal to". It helps guide the user.
+
+* **`Entry()`**: This creates an input box where users can type the number of miles they want to convert.
+
+* **`Button()`**: This creates a clickable button. I assigned a command to it so that when it's clicked, the `calculate()` function runs.
+
+* **`grid()`**: This method arranges all the widgets (like labels, buttons, inputs) in a structured row and column format.
+
+* **`config()`**: Used to update the text of a widget dynamically. I used it to show the updated km value once calculated.
+
+* **`mainloop()`**: Keeps the GUI running in a loop so it doesn’t close instantly. It's necessary for any interactive GUI app.
+
+* **Basic event handling**: I learned how to trigger a function when a button is clicked using the `command=` attribute.
+
+---
+
+## 🔧 How It Works (Step-by-Step)
+
+Here’s how the project works behind the scenes:
+
+1. **GUI Initialization**:
+
+   * The program starts by creating a window using `Tk()`.
+   * The size of the window is set using `minsize()` and a title is added.
+
+2. **Input Field**:
+
+   * An input box is displayed using `Entry()`, where users can type the number of miles.
+   * By default, it starts with "0" using `insert()`.
+
+3. **Text Labels**:
+
+   * Several `Label()` widgets are used to display static text like "Miles", "Km", and "is equal to".
+
+4. **Convert Button**:
+
+   * A button labeled "Calculate" is created using `Button()`.
+   * When clicked, it calls the `calculate()` function.
+
+5. **Conversion Function**:
+
+   * The `calculate()` function reads the number entered using `.get()`.
+   * It converts the value from miles to kilometers using the formula `km = miles * 1.60934`.
+   * Then it updates the `km_result` label with the new value using `.config()`.
+
+6. **Displaying the Result**:
+
+   * The result is shown just next to the “is equal to” text dynamically.
+
+7. **Running the GUI**:
+
+   * The `mainloop()` method keeps the window open until the user closes it.
+
+---
+
+## 🌟 Project Highlights
+
+*  Built using Python's Tkinter library – no external libraries needed.
+*  Simple and clean GUI layout using grid system.
+*  Converts miles to kilometers with a single button click.
+*  Learned how to use input fields, labels, and buttons interactively.
+*  Practiced real-world use of event-driven programming in Python.
+
+---
+
+## 🛠 How to Run
+
+1. Make sure you have Python installed (preferably 3.x).
+2. Save the code in a file called `main.py`.
+3. Run it using your terminal or IDE:
+
+```bash
+python main.py
+```
