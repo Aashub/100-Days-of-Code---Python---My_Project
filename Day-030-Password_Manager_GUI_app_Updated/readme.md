@@ -2,8 +2,9 @@
 
 ## Project Overview
 
-This is a updated version of **Password Manager** app project, In this updated version **Password Manager GUI App**, users now not only can generate **strong, complex passwords** but also user will able to search their password using search button if the website data is available in a `.json` file and if not then they will get prompt like their provided key does not exist and if it does exit than prompt will show their password and they don't have to be remember because this time it is autocopied to use it. In order to create this project, I learned how to use `try, except, else, and finally blocks` for errror handling & the `pyperclip` library to auto-copy the generated password, file handling, and JSON data management,  in Python.
+This is an updated version of the Password Manager app project. In this version, users can not only generate strong, complex passwords but also search for their saved passwords using a Search button. If the website data exists in the .json file, the app will show a pop-up with the email and password, and the password will be automatically copied to the clipboard so users don’t have to remember it. If the website doesn’t exist, a prompt notifies them that the provided key does not exist.
 
+To build this project, I learned how to use try, except, else, and finally blocks for proper error handling, how to use the pyperclip library for auto-copying passwords, and how to handle file operations and JSON data using load(), update(), and dump() in Python.
 
 ## What I Have Learned
 
