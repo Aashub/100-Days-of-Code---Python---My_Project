@@ -46,11 +46,7 @@ def restart_caesar():
             elif text_letter not in alphabet:
                 encoded_decoded_text += text_letter
 
-        if encoding_or_decoding == "encode":
-            print(f"Here is the encoded result: {encoded_decoded_text}")
-
-        elif encoding_or_decoding == "decode":
-            print(f"Here is the decode result: {encoded_decoded_text}")
+        print(f"Here is the {encoding_or_decoding}d result: {encoded_decoded_text}")
 
         # here we are asking user to does he want to continue or not.
         restart = input("Type 'yes' if you want to go again. Otherwise, type 'no'.\n").lower()
