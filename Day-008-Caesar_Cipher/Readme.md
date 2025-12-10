@@ -1,7 +1,12 @@
 # Day 8 - Caesar Cipher Project
 
 ## Project Overview
-The Caesar Cipher is a simple encryption tool that shifts letters in a message based on user input. It works by moving each letter forward or backward in the alphabet by a set number of places, making it a great way to understand basic encryption concepts.
+The Caesar Cipher is a simple encryption program that shifts letters in a message based on user input shift number. It works by moving each letter forward or backward in the alphabet by a set number of places as per user input direction(encode or decode) and encrypt and decrypt a message,This project helps me understand the basic understanding of encryption concepts by using pythong.
+
+## What I have learned
+- functions with input: Functions with input allow you to pass data (called parameters or arguments) into a function. This helps the function perform tasks using dynamic values instead of fixed ones.
+- Positional arguement: A positional argument is an argument passed to a function in the correct order. The position of the value determines which parameter it is assigned to which parameter.
+-  Keyword arguement: A keyword argument is an argument passed to a function using the parameter name, so the order does not matter. You specify which parameter the value belongs to.
 
 ## How It Works
 - The user provides three inputs: **Direction** (encode or decode), **Shift** (number of positions to move), and **Text** (the message to encrypt or decrypt).
