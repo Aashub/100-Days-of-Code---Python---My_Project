@@ -4,10 +4,10 @@
 This Calculator project is a console-based tool that allows users to perform basic arithmetic operations: addition, subtraction, multiplication, and division. The calculator can be used continuously with the current result or restarted for a fresh calculation. The main goal of this project was to strengthen my understanding of functions with output, loops, dictionaries, and input handling in Python.
 
 ## What I have Learned
-- Function with Output: A function that takes some input, do the processing, and gives back a result using the return statement which we can store in variable to reuse. It helps make the code reusable and lets us store the output for further calculations.
-  - Function with multiple return value: A function that returns more than one value at the same time, which we can use for further processing This is useful when we want to send back multiple pieces of information from a single function.
-  - Docstring: A short description written inside triple quotes (""" """) at the beginning of a function. It explains what the function does, making the code easier to understand and maintain.
-  - Recursion: When a function calls itself to repeat a process. In this project, I have used recursion to restart the calculator with fresh values without ending the program.
+- Function with Output: A function that takes some input, do the processing, and gives back a result using the return statement which we can store in variable to reuse. It helps make the code reusable anlets us store the output for further calculations.
+- Function with multiple return value: A function that returns more than one value at the same time, which we can use for further processing This is useful when we want to send back multiple pieces of information from a single function.
+- Docstring: A short description written inside triple quotes (""" """) at the beginning of a function. It explains what the function does, making the code easier to understand and maintain.
+- Recursion: When a function calls itself to repeat a process. In this project, I have used recursion to restart the calculator with fresh values without ending the program.
 
 ## How It Works
 - The program begins by displaying an ASCII art logo for the calculator (imported from the `art` module).
