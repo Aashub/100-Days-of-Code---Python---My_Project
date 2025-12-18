@@ -4,6 +4,14 @@
 The main objective of this project is to recreate a coffee machine from scratch by implementing Object-Oriented Programming (OOP) concepts—without looking into to the provided code files where all the functions were already written.
 This project brings together everything learned so far in Python, including what is procedural programming & especially the fundamentals of OOP including classes, objects, attributes, and methods. It simulates a real-world coffee machine that allows users to order drinks like espresso, latte, or cappuccino, pay with virtual coins, and receive their coffee if both resources and payment are sufficient.
 
+## What I have Learned
+- **Procedural Programming:** Procedural programming is a way of writing code where the program runs step by step using conditions, loops, and function calls, and the main focus is on the flow of execution, which makes the code a bit difficult to understand as we write more and more code in a single file.
+- **Object-Oriented Programming (OOP):** Object-Oriented Programming is a way of designing a program by dividing it into real-world-like components (objects), where each object is responsible for its own data and actions just like in this project it has Menu, CoffeeMaker, MoneyMachine class where each one has Its own responsibility Its own data Its own behavior Instead of one big program doing everything.
+- **Class:** A class is a blueprint that defines what data an object will have and what actions it can perform, but it does not do anything by itself until an object is created and example this project have classes like Menu, CoffeeMaker & MoneyMachine
+- **Object:** An object is a real, usable instance of a class that exists in memory and can access the class’s attributes and methods we can create object just like for example: menu = Menu.
+- **Attributes:** Attributes are variables that store data inside an object. we can use this attribute to perform certain task as per our requirement and as per their properties.
+- **Methods:** Methods are functions that belong to a class and define what an object can do we can we can use this method by using object to perform certain task.
+  
 ## How It Works
 - **User Interaction:** The user is asked what they would like (espresso/latte/cappuccino). They can also enter `report` to check available resources or `off` to shut down the machine.
 - **Menu & Resources:** Coffee options and their ingredient requirements are handled by the `Menu` and `CoffeeMaker` classes respectively.
