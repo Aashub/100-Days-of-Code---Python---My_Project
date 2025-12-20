@@ -11,6 +11,7 @@ in day 19 of learning main focus was on understanding higher-order functions, wo
 ## What I Have Learned
 
 - How to create and manage multiple turtle objects (instances).
+- objects (instances): object instances are those thing where each object are similar to each other but they behave differently to each other like some turtle moving at different pace and their color this is called instances
 - How to use `event listeners` and `screen.textinput()` to get user input.
 - How to define and use **higher-order functions**.
 - How to use documentation to find suitable methods and understand their purpose.
