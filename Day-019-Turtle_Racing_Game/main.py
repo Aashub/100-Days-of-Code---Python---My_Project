@@ -5,7 +5,7 @@ import  random
 # here we are setting screen size and other required
 screen =  Screen()
 screen.setup(width=500, height=400)
-user_choice = screen.textinput(title="Make your bet.", prompt="Which turtle will win the race? Enter a turtle color: ")
+user_choice = screen.textinput(title=f"Which turtle will win the race? Enter a turtle color: ", prompt=f"{color_list}: ").lower()")
 
 
 color_list = ["red", "orange", "Gray", "green", "blue", "purple"]
@@ -32,7 +32,7 @@ finish_line.goto(210, 200)
 finish_line.left(360)
 finish_line.pendown()
 finish_line.goto(210, -200)
-finish_line_coord = 214
+finish_line_coord = 190
 
 # this display_winner object is created for showing the winner on screen.
 display_winner = Turtle()
