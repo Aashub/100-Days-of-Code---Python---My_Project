@@ -1,4 +1,4 @@
-# Day 20 - Snake Game 
+# Day 20-21 - Snake Game 
 ##  Project Overview
 
 This project is a traditional snake game where the snake increases in size whenever it eats food. After being eaten, the food relocates to a random position on the screen. The game ends when the snake collides with the wall or its own body. A score is displayed and updated with each food consumed.
