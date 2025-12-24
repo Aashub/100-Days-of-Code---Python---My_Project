@@ -10,13 +10,8 @@ Y_AXIS = -100
 # here we are setting screen size and other required
 screen =  Screen()
 screen.setup(width=500, height=400)
-<<<<<<< HEAD
-user_choice = screen.textinput(title=f"Which turtle will win the race? Enter a turtle color: ", prompt=f"{color_list}: ").lower()")
-=======
 user_choice = screen.textinput(title=f"Which turtle will win the race? Enter a turtle color: ", prompt=f"{color_list}: ").lower()
->>>>>>> f3db408 (initial commit)
-
-
+user_choice = screen.textinput(title=f"Which turtle will win the race? Enter a turtle color: ", prompt=f"{color_list}: ").lower()
 
 # This for loop will assign each turtle a specific starting position in the screen
 for turtles_position in range(len(color_list)):
