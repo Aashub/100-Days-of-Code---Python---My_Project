@@ -33,11 +33,18 @@ class Snake:
 
         self.x_cord -= 20
 
+    def reset_snake(self):
+
+        for off_screen in self.segment_list:
+            off_screen.goto(500,500)
+
+        self.segment_list.clear()
+        self.create_snake()
+        self.head = self.segment_list[0]
+
     def extend_snake(self):
         """this method will help in extend the snake body """
         self.add_segment(self.segment_list[-1].position())
-
-
 
 
     def move(self):
