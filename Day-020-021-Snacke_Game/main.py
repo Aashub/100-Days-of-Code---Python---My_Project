@@ -33,21 +33,20 @@ while should_continue:
 
     # this condition will help to increase the snake size and increase score
     if snake.head.distance(food) < 15:
-        score.clear()
         snake.extend_snake()
         score.increase_score()
         food.collision_with_food()
 
     # this condition will check if snake collided with the wall or not
     if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 279 or snake.head.ycor() < -280:
-        should_continue = False
-        score.write_game_over()
-
+        score.reset_scoreboard()
+        snake.reset_snake()
 
     for body_collision in snake.segment_list[1:]:
 
         if snake.head.distance(body_collision) < 10:
-            should_continue = False
-            score.write_game_over()
+            score.reset_scoreboard()
+            snake.reset_snake()
+
 
 screen.exitonclick()
