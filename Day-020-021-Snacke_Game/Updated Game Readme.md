@@ -1,7 +1,7 @@
 # Day 20-21 - Snake Game Updated
 ##  Project Overview
 
-This is an updated Snake Game project with all the previous functionality intact. In this version, whenever the player reaches a new highest score, it gets stored in a file so it can be used later. When the game is restarted, the highest score from the file is displayed on the screen. This functionality is achieved using Python's read and write methods, which I learned in today’s lesson and used to update my Snake Game project.
+This is an updated Snake Game project with all the previous functionality intact. In this version, whenever the player reaches a new highest score, it gets stored in a file so it can be used later. When the game is restarted, the highest score from the file is displayed on the screen. This functionality is achieved using Python's read and write methods **(leared in Day 24)** , which I learned and used to update my Snake Game project.
 
 ---
 
