@@ -9,10 +9,12 @@ window.config(padx=50, pady= 40)
 
 def convert_ml_km():
     """this function will convert miles into km."""
-
-    miles_value = int(entry.get())
-    km_value = round(miles_value * 1.609344, 2)
-    converting_value.config(text = km_value)
+    try:
+        miles_value = float(entry.get())
+        km_value = round(miles_value * 1.609344, 2)
+        converting_value.config(text = km_value)
+    except ValueError:
+        converting_value.config(text="Invalid input")
 
 # here we are creating object of miles and defining its attributes
 miles = Label(text="Miles", font=("Arial", 10, "bold"))
@@ -34,7 +36,7 @@ label = Label(text="Km", font=("Arial", 10, "bold"))
 label.grid(row=1, column=2)
 
 # here we are creating object of entry filed and defining its attributes
-entry = Entry(width=10)
+entry = Entry(width=10, justify="right")
 entry.grid(row=0, column=1)
 
 # here we are creating object of button and defining its attributes and calling the function as well
