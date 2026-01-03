@@ -36,13 +36,13 @@ Here’s how the project works behind the scenes:
 
 * **GUI Initialization**: The program starts by creating a window object by using `Tk()`. by using this windows object  we set the size of the screen by using `minsize()` method and we have used `title()` method to name the windows the project title.
 
-* **Input Field**: Then we have used an `Entry()` class which allows us to create a field in GUI to add any input, by using input object we have used `insert()` method where initially we have set its default value to 0. 
+* **Input Field**: Then we have used an `Entry()` class which allows us to create a field in GUI to add any input, by using entry object. 
 
 * **Text Labels**: Several `Label()` widgets are used in this project to display static text like "Miles", "Km", and "is equal to".
 
-* **Calculate Button**: A button labeled "Calculate" is created using `Button()` class . in this program by using button object it has allows us to trigger the Calcuate function When its clicked, it calls the `calculate()` function.
+* **Calculate Button**: A button labeled "Calculate" is created using `Button()` class . in this program by using button object it has allows us to trigger the Calcuate function When its clicked, it calls the `convert_ml_km()` function.
 
-* **Calculate Function**: The `calculate()` function reads the number entered using `.get()` and then it converts the value from miles to kilometers, Then it updates the `km_result` label with the new value using `.config()`.
+* **convert_ml_km Function**: The `convert_ml_km()` function reads the number entered using `.get()` and then it converts the value from miles to kilometers, Then it updates that in  `converting_value` label with the new value using `.config()`.
 
 * **Displaying the Result**: The result is shown just next to the “is equal to” label text dynamically.
 
