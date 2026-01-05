@@ -100,7 +100,7 @@ def timer_countdown(seconds):
     # if seconds will be greater than 0 than .after() method will call the time_countdown function again & also subtract the second each second.
     if seconds > 0:
         global timer
-        timer = window.after(5, timer_countdown, seconds - 1)
+        timer = window.after(1000, timer_countdown, seconds - 1)
 
     # every time seconds count down become zero this else statement will get triggered and call the start_timer function again for the next reps
     else:
