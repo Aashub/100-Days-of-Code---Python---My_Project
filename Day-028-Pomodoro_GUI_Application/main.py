@@ -24,6 +24,8 @@ def reset_pomodoro():
 
     global reps, tick_mark_list, x_cor
 
+    start_button.grid(row=2, column=0, padx=14)
+    invisible_Label.grid_remove()
     x_cor = 110
     reps = 0
 
@@ -34,6 +36,8 @@ def reset_pomodoro():
     for remove_tick in tick_mark_list:
         remove_tick.config(text= "")
 
+
+
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
 def start_timer():
@@ -43,6 +47,8 @@ def start_timer():
     short_break_second = SHORT_BREAK_MIN * 60
     long_break_second = LONG_BREAK_MIN * 60
 
+    start_button.grid_remove()
+    invisible_Label.grid(row=2, column=0, padx=31)
     global reps
     reps += 1
 
@@ -62,7 +68,12 @@ def start_timer():
         timer_label.config(fg=RED, text="Break")
 
     else:
-        pass
+        reps = 0
+        start_button.config(command=start_timer)
+        reset_pomodoro()
+        invisible_Label.grid_remove()
+        start_button.grid(row=2, column=0, padx=14)
+
 
 def tick_mark_function():
     """this function will help in marking the the tick mark everytime the 2 reps are being completed."""
@@ -89,7 +100,7 @@ def timer_countdown(seconds):
     # if seconds will be greater than 0 than .after() method will call the time_countdown function again & also subtract the second each second.
     if seconds > 0:
         global timer
-        timer = window.after(1000, timer_countdown, seconds - 1)
+        timer = window.after(5, timer_countdown, seconds - 1)
 
     # every time seconds count down become zero this else statement will get triggered and call the start_timer function again for the next reps
     else:
@@ -132,6 +143,8 @@ start_button.grid(row=2, column=0, padx=14)
 # reset_button
 reset_button = Button(text= "Reset", font= ("Arial" , 10, "bold"), highlightthickness=0, command = reset_pomodoro)
 reset_button.grid(row=2, column=2)
+
+invisible_Label = Label(bg=YELLOW)
 
 
 window.mainloop()
