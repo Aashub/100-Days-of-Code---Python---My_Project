@@ -30,7 +30,7 @@ def unit_converter():
 
         elif Miles_text == "Km" and km_text == "Miles":
             km_value = float(entry.get())
-            miles_value = int(round(km_value / 1.609344))
+            miles_value = int(round(km_value / 1.609344, 2))
             converting_value.config(text=miles_value)
 
     except ValueError:
@@ -100,3 +100,4 @@ switch_button.place(x= 250, y = 4)
 
 
 window.mainloop()
+
