@@ -13,6 +13,8 @@ To build this project, I revised about how to work with CSV files and store thei
 
 * **datetime module**: Using the datetime module, I learned how to get the current day and month and also learned about other things of datetime module. This helped me compare today’s date and month with the birthday date and month stored in the CSV file to decide when the email should be sent.
 
+* **pythonanywhere** learned how can i automate the process of running the program each day at a specific time using pythonanywhere.com
+
 
 ## How It Works 
 
