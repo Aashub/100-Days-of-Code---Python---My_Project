@@ -21,8 +21,8 @@ def send_mail(weather) :
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
 api_key = ""
 weateher_paramter = {
-    "lat": 23.334169, # Your latitude
-    "lon": 75.037636, # Your longitude
+    "lat": , # Your latitude
+    "lon": , # Your longitude
     "appid": api_key,
     "cnt": 4
 }
