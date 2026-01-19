@@ -4,8 +4,8 @@ from smtplib import SMTP
 def send_mail(weather) :
     """this function will create the secure connection between sender and receiver using smtp module and take input of weather condition and send the mail."""
 
-    my_email = "anonyasteroid@gmail.com"
-    password = "jiwvmkgqvdmooxdu"
+    my_email = "@gmail.com"
+    password = ""
 
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
@@ -19,7 +19,7 @@ def send_mail(weather) :
 
 #*********************** api for weather ************************
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
-api_key = "5f5123979aaf67d140306ddd6c8efb15"
+api_key = ""
 weateher_paramter = {
     "lat": 23.334169, # Your latitude
     "lon": 75.037636, # Your longitude
