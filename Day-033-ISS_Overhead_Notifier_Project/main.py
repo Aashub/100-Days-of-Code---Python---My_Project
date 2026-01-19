@@ -3,8 +3,8 @@ from datetime import datetime
 from smtplib import  SMTP
 import time
 
-MY_LAT = 23.334169 # Your latitude
-MY_LONG = 75.037636 # Your longitude
+MY_LAT =  # Your latitude
+MY_LONG =  # Your longitude
 
 def send_mail():
     """this function will create the secure connection between sender and receiver using smtp module. and send the message"""
