@@ -8,7 +8,7 @@ This project is a simple HTML static webpage created as part of my early website
 
 * **Unordered List**: Learned how to use `<ul></ul>` with `<li></li>` elements to display a list of items in bullet point format, such as items to bring to a birthday party.
 
-* **Ordered List**: : Learned that when we use `<ol></ol> with `<li></li>` elements, it displays list items in a numbered sequence format.
+* **Ordered List**: : Learned that when we use `<ol></ol> with` `<li></li>` elements, it displays list items in a numbered sequence format.
 
 * **Nested List**: Learned about nested lists in HTML where we can place an unordered list or ordered list inside another list tag to create sub-lists for better structure.
 
