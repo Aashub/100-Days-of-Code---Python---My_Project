@@ -1,4 +1,4 @@
-# Day 44 – Motivational Poster Project
+# Day 44 – Motivational Meme Project
 
 ## Project Overview
 
