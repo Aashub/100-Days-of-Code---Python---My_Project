@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="top">
+        <div class="title"><h1>My Blog</h1></div>
+    </div>
+    <div class="content">
+        <div class="card">
+            <h2>{{ blog[0]["title"] }}</h2>  <!-- this will load the title -->
+            <p class="text">{{ blog[0]["subtitle"] }} </p>  <!-- this will load the subtitle -->
+             <a href = "{{url_for('get_post', num=1)}}">Read</a>  <!-- here get_post function get called with its keyword argument to load post url page.-->
+        </div>
+    </div>
+    <div class="content">
+        <div class="card">
+            <h2>{{ blog[1]["title"] }}</h2>
+            <p class="text">{{ blog[1]["subtitle"] }} </p>
+            <a href = "{{url_for('get_post', num=2)}}">Read</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="card">
+            <h2>{{ blog[2]["title"] }}</h2>
+            <p class="text">{{ blog[2]["subtitle"] }} </p>
+            <a href = "{{url_for('get_post', num=3)}}">Read</a>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+    <p>Made with ♥️ in India.</p>
+</footer>
+</html>
