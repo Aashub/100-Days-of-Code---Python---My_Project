@@ -1,0 +1,50 @@
+.gradient-background {
+  background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+}
+
+
+.testimonial_text{
+  padding-top: 2rem;
+}
+
+.rounded_circle_frame{
+  border-radius: 50%;
+  align-items: center;
+  width: 100px;
+  height: auto;
+  margin-top: 3rem;
+
+}
+
+.dog_name{
+
+font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+font-size:20px;
+font-weight:200;
+margin-top: 1rem;
+}
+
+
+#my-5{
+  margin-top: 3rem;
+}
