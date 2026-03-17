@@ -1,0 +1,46 @@
+{% include "header.html" %}    <!-- jinja template for header-->
+        <!-- Page Header-->
+
+        <header class="masthead" style="background-image: url('static/assets/img/home-bg.jpg')">  <!-- updated the source of image so the image will appear-->
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Asteroid's Blog</h1>
+                            <span class="subheading">A collection of Asteroid's random musings.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for post in all_blog_post %}  <!-- jinja template: this for loop will help in load all blogs title, subtitle, author and date.-->
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="{{url_for('show_blog', num = post.id) }}">   <!-- url_for is used for calling show_blog function with keyword argument value which will be blog id so when user click on the blog title or subtitle that particular blog only gets opened.-->
+                            <h2 class="post-title">{{ post.title }}</h2>      <!-- jinja template will show title of blog-->
+                            <h3 class="post-subtitle">{{ post.subtitle }}</h3>  <!-- jinja template will show subtitle of blog-->
+                        </a>
+
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">{{post.author}}</a>   <!-- jinja template will show author name  of blog-->
+                            on {{post.date}}   <!-- jinja template will show published date of the  blog-->
+                        </p>
+                    </div>
+
+                      <hr class="my-4" />
+                    {% endfor %}   <!--in jinja template we need to close the for loop like this.-->
+
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+
+            </div>
+        </div>
+
+{% include "footer.html" %}   <!-- jinja template for footer-->

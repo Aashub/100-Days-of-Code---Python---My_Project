@@ -1,0 +1,37 @@
+{% include "header.html" %}   <!-- jinja template for header-->
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('static/assets/img/post-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+
+                        {% for post in all_blog_post %}             <!-- jinja template for loop will help in showing the title, subtitle, date, author name and blog body-->
+                            {% if post.id == post_num: %}           <!-- jinja template if statement will check that post_num value is equal to blog_post id or not and if it matches than only this for loop condition gets true. -->
+                            <div class="post-heading">
+                                <h1>{{ post.title }}</h1>           <!-- This will show the title of the blog-->
+                                <h2 class="subheading">{{ post.subtitle }}</h2>   <!-- This will show the subtitle of the blog-->
+                                <span class="meta">
+                                    Posted by
+                                    <a href="#!">{{post.author}}</a>  <!-- This will show the author name of the blog-->
+                                    on {{post.date}}                <!-- This will show the date of the blog-->
+                                </span>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p> {{ post.body }}</p>   <!-- This will show the body of the blog-->
+                    </div>
+                 {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </article>
+        <!-- Footer-->
+{% include "footer.html" %}     <!-- jinja template for footer-->
