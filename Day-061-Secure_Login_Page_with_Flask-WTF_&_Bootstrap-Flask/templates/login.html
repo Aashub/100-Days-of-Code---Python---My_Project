@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from 'bootstrap4/form.html' import render_form %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<div class = "container">
+    <h1>Login</h1>
+    {{ render_form(login_form) }}
+</div>
+{% endblock %}
+
+
+<!--<form method="POST" action=" {{ url_for('login') }} " novalidate>-->
+    <!--csrf token-->
+<!--    {{ login_form.csrf_token }}    -->
+<!--    <h1>Login</h1>-->
+<!--    <p>-->
+        <!--here we using login_form object to call Email attribute LoginForm class and also also setting its text size to be 20-->
+<!--        {{ login_form.Email.label }} <br> {{ login_form.Email(size = 30) }}-->
+<!--        {% for error in login_form.Email.errors %}-->
+<!--        <span style="color:red">{{ error }}</span>-->
+<!--        {% endfor %}-->
+<!--    </p>-->
+
+<!--    <P>-->
+        <!--here we using login_form object to call Password attribute LoginForm class  and also also setting its text size to be 20-->
+<!--        {{ login_form.Password.label }} <br> {{ login_form.Password(size = 30) }}-->
+<!--        {% for error in login_form.Password.errors %}-->
+<!--        <span style="color:red">{{ error }}</span>-->
+<!--        {% endfor %}-->
+<!--    </P>-->
+<!--    {{ login_form.login }}-->
+    <!--here we using login_form object to call login attribute in LoginForm class.-->
+
+<!--</form>-->
+
+
