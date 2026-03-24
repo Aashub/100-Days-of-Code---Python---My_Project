@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Restaurants{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <h1>All Cafes</h1>
+
+            <table class="table table-dark table-striped table-hover">
+                <!--  code to render a Bootstrap
+                Table that contains all the information from the
+                cafe-data.csv file. -->
+
+                <tbody>
+                {% for rows_data in cafes %}
+                <tr>
+                    {% for value in rows_data %}
+
+                    {% if value == "Location" %}
+                        <td>{{ value }}</td>
+                    {% elif loop.index == 2 %}
+                        <td><a href="{{ value }}">Map link</a></td>
+                    {% else %}
+                        <td>{{ value }}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                </tbody>
+
+
+            </table>
+
+            <p><a href="{{url_for('home')}}">Return to index page</a></p>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
