@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Rating</title>
+</head>
+<body>
+<form action="{{ url_for('edit', book_id = update_book_rating.id) }}" method="POST">    <!-- calling hte edit function with book_id with new rating in it.-->
+    <label>Book Name: {{update_book_rating.title}}<br><br>Current Rating: {{update_book_rating.rating}}<br><br></label>
+    <input type="text" id="book_rating" name="book_rating" placeholder="New Rating"/>
+    <button type="submit">Change Rating</button>
+</form>
+
+</body>
+</html>

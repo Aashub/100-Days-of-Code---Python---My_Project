@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Library</title>
+</head>
+<body>
+<h1>My Library</h1>
+
+{% if books == [] %}
+<p>Library is empty.</p>
+{% else %}
+{% for book in books %}
+<!-- jinja template: this for loop will help in load all book title, author name, rating.-->
+<ul>
+    <li>{{ book.title }} - {{ book.author }} - {{ book.rating }}/10 <a href="{{url_for('edit', book_id = book.id)}}">Edit Rating</a></li>
+
+</ul>
+{% endfor %}      <!--in jinja template we need to close the for loop like this.-->
+{% endif %}
+<a href="{{url_for('add')}}">Add New Book</a>
+</body>
+</html>
