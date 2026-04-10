@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="heading">Select Movie</h1>
+
+    {% for movie_details in searched_movie_data["results"] %}
+  <p>
+    <a href="{{url_for('home', movie_id = movie_details.id)}}" class="click">{{movie_details.title}} - {{movie_details.release_date}}</a>
+  </p>
+    {% endfor %}      <!--in jinja template we need to close the for loop like this.-->
+</div>
+{% endblock %}
