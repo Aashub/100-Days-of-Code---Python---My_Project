@@ -1,0 +1,10 @@
+#install them
+
+Bootstrap_Flask
+Flask_CKEditor
+WTForms
+Flask_WTF
+Werkzeug
+Flask
+flask_sqlalchemy
+SQLAlchemy
