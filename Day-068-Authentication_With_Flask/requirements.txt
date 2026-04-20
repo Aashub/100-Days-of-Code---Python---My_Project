@@ -1,0 +1,7 @@
+# Requried Module
+
+Flask_Login
+Werkzeug
+Flask
+flask_sqlalchemy
+SQLAlchemy

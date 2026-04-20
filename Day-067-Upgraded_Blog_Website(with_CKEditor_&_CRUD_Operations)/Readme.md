@@ -1,4 +1,4 @@
-# Day 66 – Upgraded Blog Website with CKEditor & Full CRUD Operations
+# Day 67 – Upgraded Blog Website with CKEditor & Full CRUD Operations
 
 ## Project Overview
 
