@@ -52,7 +52,7 @@ This is a secure user authentication system built with Flask that allows users t
 
 * **secrets.html**: This template extends base.html and displays a welcome message with the logged-in user's name ({{ name }}). It includes a link to download the file using {{ url_for('download') }}.
 
-### Project Highlights
+## Project Highlights
 
 * **Secure Password Storage**: Used Werkzeug's generate_password_hash() with salting and check_password_hash() to securely store and verify passwords without storing plain text.
 
