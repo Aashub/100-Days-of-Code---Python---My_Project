@@ -1,0 +1,12 @@
+# Requried Module
+
+Bootstrap_Flask
+Flask_CKEditor
+Flask_Login
+Flask-Gravatar
+Flask_WTF
+WTForms
+Werkzeug
+Flask
+flask_sqlalchemy
+SQLAlchemy
