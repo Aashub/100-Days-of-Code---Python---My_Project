@@ -64,7 +64,7 @@ This is a fully upgraded dynamic blog website built with Flask that now supports
 
 * **footer.html**: Footer template that appears at the bottom of every page. It contains social media links (Twitter, Facebook, GitHub) and a copyright notice.
 
-### Project Highlights
+## Project Highlights
 
 * **One-to-Many Relationships**: Learned how to create one to many relationship schema where one admin user can have many posts, and posts can have many comments.
 * **Admin Decorator**: Created a custom guard that only lets the admin user (ID=1) create, edit, or delete posts.
