@@ -14,11 +14,11 @@ import os
 from pathlib import Path
 from smtplib import SMTP
 
-EMAIL = os.environ["email"]
-PASSWORD = os.environ["password"]
+EMAIL = os.environ.get("email")
+PASSWORD = os.environ.get("password")
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ["secret_key"]
+app.config['SECRET_KEY'] = os.environ.get("secret_key")
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -28,7 +28,7 @@ class Base(DeclarativeBase):
     pass
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["db"]
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("db")
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
