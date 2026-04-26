@@ -1,74 +1,52 @@
-# Day 69 – Upgraded Blog Website(with Flask User Authentication)
+# Day 71 – Deployed My Blog Website Live on Render
 
+## Website Overview
 
-## Project Overview
+This is my fully functional blog website that I built with Flask and successfully deployed live on the internet using Render (a cloud hosting platform). Anyone can now visit my website, sign up, log in, leave comments on blog posts, and read all my content. The admin (me) can create, edit, and delete posts from anywhere in the world. This project taught me how to take a Flask application from my local computer and put it online so others can access it. I learned about deployment, cloud hosting, WSGI servers, PostgreSQL databases, environment variables, and how to keep my secret keys safe.
 
-This is a fully upgraded dynamic blog website built with Flask that now supports user authentication, comment functionality, relational databases, admin-only features, and rich text editing. The website allows users to register and log in securely, leave comments on blog posts with profile images using Gravatar, and view all blog content. Admin users (user ID 1) have special privileges including creating new posts, editing existing posts, and deleting posts. The project demonstrates advanced Flask concepts including one-to-many database relationships, custom decorators for admin authorization, Flask-Login for session management, password hashing with salting, CKEditor for rich text editing, Gravatar integration for user avatars, and flash messages for user feedback.
+## My Blog Website URL
+* https://my-peronal-blog-website.onrender.com/
 
 ## What I Have Learned
 
-* **Revised & Used Python Decorators**: Created a custom @admin_only decorator to restrict access to certain routes based on user privileges. The decorator checks if the currently logged-in user has an ID of 1 (admin) using if current_user.id != 1: return abort(403). If not, it returns a 403 Forbidden error. This is applied to routes like adding new posts, editing posts, and deleting posts. The @wraps(func) decorator from functools preserves the original function's name and metadata, which is important for debugging.
+* **Deployment using Render, Git, and GitHub**: Deployment means taking my code from my local computer and putting it on a cloud server so anyone with internet can access it. I used Render as my hosting provider because it's free and easy to use with GitHub account. I pushed my code to GitHub, connected my GitHub repository to Render and after making certain configuration in render for creating new workspace for deploying my website and database creation via postgresql and every configuration gets executed successfully,Render automatically deployed my website. Now whenever I push changes to GitHub, Render automatically updates the live website.
 
-* **Creating Relational Databases**: Learned how to create relationships between database tables using SQLAlchemy's relationship() function and foreign keys. Instead of storing redundant data, relational databases link tables together using IDs. For example, instead of storing the author's name in every blog post, the BlogPost table stores an author_id that references the id column in the User table. This prevents data duplication and ensures consistency.
+* **Gunicorn(WSGI Server)**: Gunicorn (Green Unicorn) is a WSGI server. WSGI (Web Server Gateway Interface) is a standard that helps web servers talk to Python web applications. When I run my Flask app locally, I use app.run() which is Flask's built-in server. But that server is slow and not safe for real world use. Gunicorn acts as a middleman between the internet and my Flask app. It handles multiple users at the same time, manages requests efficiently, and keeps my app running smoothly. I set it up by creating a Procfile (a file that tells Render how to run my app) with the line web: gunicorn main:app - which means "use gunicorn to run the app variable from the main.py file".
 
-* **Creating One-to-Many Database**: Implemented one to many relationships where one user can have many blog posts and many comments, but each blog post belongs to one user and each comment belongs to one user and one post. The User table has posts = relationship("BlogPost", back_populates="author") which means one user can be linked to multiple BlogPost records. Similarly, BlogPost has author_id = mapped_column(ForeignKey("users.id")) and author = relationship("User", back_populates="posts"). The back_populates parameter creates a bidirectional relationship so changes in one direction reflect in the other. The cascade="all, delete-orphan" ensures that when a blog post is deleted, all its associated comments are also deleted automatically.
+* **Why Create a Procfile**: A Procfile (Process File) is a special file that tells cloud hosting platforms like Render what command to run to start my application. Without a Procfile, Render wouldn't know how to launch my website. The format is simple: web: gunicorn main:app where web is the process type, gunicorn is the server, main is my Python filename (main.py), and app is the Flask instance inside that file.
 
-* **Flask-Gravatar Integration**: Used Flask-Gravatar extension to display user profile images (avatars) in the comments section. Gravatar (Globally Recognized Avatar) associates an email address with an image. In the post.html template, It converts the commenter's email into a Gravatar URL. The Gravatar is configured with size=100, rating='g' (safe for all audiences), default='retro' (fallback if no avatar exists), and other customization options.
+* **Updated .gitignore File**: Before pushing my code I have updated my .gitignore file to make sure unnecessary files don't get uploaded to GitHub or Render. I added things like __pycache__/ (Python cache files), .env (my secret keys and passwords), *.db (local database files since I'm switching to PostgreSQL), and instance/ (folder where local databases are stored). This keeps my secrets safe and reduces clutter.
 
-* **Admin Authorization with abort()**: Used Flask's abort(403) function to return a 403 Forbidden HTTP status code when non-admin users try to access restricted routes. This prevents unauthorized users from creating, editing, or deleting blog posts by manually typing URLs like /new-post or /delete/1.
+* **Creating a New Web Service**: On Render dashboard, I clicked "New +" and selected "Web Service". I connected my GitHub account, selected my blog repository also i make sure that my which Project Directory should be used in render so only that Directory used by render to deploy or run my website after that Render automatically detected it was a Python app. I kept all default settings and clicked "Create Web Service". Render then cloned my code from GitHub, installed dependencies from requirements.txt, and started my app.
+
+* **Adding Env Variables on Render**: My web app uses secret keys and email passwords that I stored in environment variables locally (using os.environ). On Render, I had to add these same variables in the dashboard under "Environment Variables". I added: SECRET_KEY (my Flask secret key), email (my Gmail for contact form), password (my Gmail app password), and db (database URL). This keeps my secrets safe and not visible in my code.
+
+* **Creating a New PostgreSQL Database**: Previously, my blog used SQLite (a file-based database) which doesn't work well on cloud hosting. Render provides a free PostgreSQL database. PostgreSQL is a powerful, production-ready database that handles multiple users and connections better than SQLite. I created a new PostgreSQL database from Render dashboard, and Render gave me an "Internal Database URL" (a special link my app uses to connect to the database).
+
+* **Setting SQLALCHEMY_DATABASE_URI Env Variable**:  I took the Internal Database URL from Render and added it as an environment variable named db (which my code reads as os.environ.get("db")). Now my app uses PostgreSQL instead of SQLite. The database is hosted on Render's servers, not on my computer, so it works even when my computer is off.
+
+* **PostgreSQL vs SQLite**: SQLite works great for local development because it's simple and file-based. But for live deployment, PostgreSQL is better because it handles multiple users, has better security, works well with cloud platforms, and supports more advanced features. Both databases use the same SQLAlchemy code - I just had to change the SQLALCHEMY_DATABASE_URI from sqlite:///posts.db to the PostgreSQL URL.
+
+## How It Works/Deployment Process
+
+* **Prepare Code for Deployment**: I made sure my main.py reads database URL from environment variable using os.environ["db"] instead of a hardcoded SQLite path. I created a requirements.txt file with all my Python packages (Flask, SQLAlchemy, Flask-Login, gunicorn, psycopg2-binary, etc.). I updated my .gitignore to exclude local database files and secret files.
+
+* **Push Code to GitHub**: I committed and pushed my project to remote repository of all my changes using git commands. Now My code is now on GitHub.
+
+* **Create PostgreSQL Database on Render**: I went to Render dashboard, clicked "New +" → "PostgreSQL". Render created a free database and gave me a "Internal Database URL" which looks like postgresql://username:password@host:port/database. I copied this URL.
+
+* **Create Web Service on Render**: I clicked "New +" → "Web Service", connected my GitHub, selected my blog repository. Render showed me a configuration page. I made sure all the configuration is correct including environment variable and project file path and clicked "Create Web Service.
+
+* **Trigger Deploy**: After adding environment variables, I manually triggered a new deployment by clicking Deploy latest commit and restart service. Render pulled my code, installed dependencies, and started my app with gunicorn.
+
+* **Access Live Website**: After deployment succeeded, Render gave me a URL: https://my-peronal-blog-website.onrender.com. Anyone in the world can now visit my blog website!
 
 
-## How It Works
+## Highlights
 
-### main.py
-
-*  The file imports required modules including Flask, SQLAlchemy with relationship() for database relations, Flask-Login for session management, Flask-Gravatar for user avatars, and custom forms from forms.py. The Flask app is created with secret key from environment variables, CKEditor and Bootstrap5 are initialized. The SQLite database posts.db is configured. Flask-Login is set up with login_manager.init_app(app) and @login_manager.user_loader callback. Three database models are defined—User (id, email, password, name) with posts and comments relationships, BlogPost (id, title, subtitle, date, body, img_url, author_id foreign key to users.id, author relationship back to User, and comments relationship with cascade delete), and Comment (id, text, author_id foreign key to users.id, post_id foreign key to blog_posts.id, with relationships to both User and BlogPost). Gravatar is configured with size, rating, and default image settings. The admin_only decorator checks if current_user_id ise equal to 1 or not, otherwise returns abort(403). The create_database() function ensures the database exists before operations.
-
-* **Home Route**: Renders the home page displaying all blog posts. It calls create_database() to ensure the database exists, fetches all posts using read_blogs_data(), and passes them to index.html. The template shows author names using {{post.author.name}} (accessing the related User object).
-
-* **Register Route**: This route handles user registration. On POST, it checks if the email already exists. If yes, it flashes "You've already signed up, log in instead!" and redirects to login. If the email is new, it hashes the password, creates a new user, saves to database, logs the user in automatically, and redirects to home page.
-
-* **Login Route**: Handles user login using LoginForm. On POST, it queries for the user by email. If user doesn't exist, flashes "That Email, does not exist. Please try again!" and redirects to login. If user exists, it verifies the password using check_password_hash(). If correct, calls login_user(user_obj) and redirects to home. If incorrect, flashes "Password Incorrect" and redirects to login.
-
-* **Logout Route**: Calls logout_user() to end the user's session and redirects to the home page.
-
-* **Show Post Route**: Displays an individual blog post with comment form. When a comment is submitted, it checks current_user.is_authenticated or not. If logged in, it creates a new Comment object linking comment_author=current_user and parent_post=requested_blog_post, adds to database, and redirects. If not logged in, it flashes "You need to login or register to comment!" and redirects to login page.
-
-* **Edit Post Route**: This route is protected by @admin_only so only admin can access it. When admin first visits the page (GET request), the form is already filled with the post's current information so they can just change what they want. When admin submits the edit form (POST request), it updates the existing post with the new form data and saves it to the database.
-
-* **Delete Post Route**: This route is protected by @admin_only so only admin can access it. It finds the post by its ID, deletes it from the database, and redirects to home page. All comments on that post are deleted automatically because of the cascade delete setting.
-
-* **About Route**: This route renders the about page with static content.
-
-* **Contact Route**: When someone submits the contact form (POST request), it grabs their name, email, phone number, and message, sends an email to the site owner, and shows a success message. On GET request, it just shows the contact form.
-
-### forms.py
-
-*  Contains four WTForm classes. `BlogForm` is used for creating and editing posts with title, subtitle, author, image URL, body with CKEditor, and submit button. `RegisterForm` is used for sign up with email, password, username, and submit. `LoginForm` is used for login with email, password, and submit. `CommentForm` is used for leaving comments with comment field using CKEditor and submit button.
-
-### Supporting Files
-
-* **index.html**: Home page template. It loops through all posts and shows each post's title, subtitle, author name, and date. It shows the delete button (✘) only if the logged-in user is admin. It also shows the "Create New Post" button only if admin is logged in.
-
-* **post.html**: Single post page template. It shows the full post with title, subtitle, body, author name, and date. It shows the "Edit Post" button only if admin is logged in. It shows all comments with Gravatar profile pictures and commenter names below the post. It shows the comment form for logged-in users to write comments. if someone try to comment without logging in it will redirect them to login page with flash message by saying log in first if you want to make a comment. 
-
-* **make-post.html**: Reusable template for both creating new posts and editing existing posts. It uses {% if id %} to show "Edit Post" or "New Post" as the heading. It loads CKEditor for rich text editing and renders the form using Bootstrap-Flask.
-
-* **login.html & register.html**: Authentication templates that render their respective WTForms using render_form(). Both include flash message handling using get_flashed_messages() to display error alerts for duplicate registrations or incorrect credentials.
-
-* **header.html**: Navigation bar template that appears on every page. It shows different links based on login status. If user is logged out, it shows "Login" and "Register". If user is logged in, it shows "Log Out". It always shows "Home", "About", and "Contact" links for everyone.
-
-* **contact.html**: Contact page template. It shows a form where visitors can enter their name, email, phone, and message. After the form is submitted successfully, the heading changes from "Contact Me" to "Successfully sent message" to show the user that their message is being sent successfully.
-
-* **about.html**: Static about page with placeholder text about the blog author. It includes the header and footer.
-
-* **footer.html**: Footer template that appears at the bottom of every page. It contains social media links (Twitter, Facebook, GitHub) and a copyright notice.
-
-### Project Highlights
-
-* **One-to-Many Relationships**: Learned how to create one to many relationship schema where one admin user can have many posts, and posts can have many comments.
-* **Admin Decorator**: Created a custom guard that only lets the admin user (ID=1) create, edit, or delete posts.
-* **Comment System**: Logged-in users can leave comments on posts. Their profile picture from Gravatar shows up next to their comment.
-* **Cascade Delete**: Used cascade delete so When a post is deleted, all its comments are automatically deleted too from the database.
-* **Gravatar Integration**: Profile pictures appear automatically. No need to upload images. Just enter your email and Gravatar gives you a picture
+* **Live Deployment**: Successfully deployed my blog website to Render.com so anyone can access it online.
+* **WSGI with Gunicorn**: Learned to use Gunicorn as a production WSGI server instead of Flask's built-in server.
+* **PostgreSQL Database**: Switched from SQLite to PostgreSQL for better performance and reliability in production.
+* **.gitignore Updated**: Added __pycache__, .env, *.db, instance/ to keep secrets and local files out of GitHub.
+* **Render Platform**: Learned to use Render as a hosting provider connecting GitHub, creating web services, managing environment variables, and deploying website.
 
