@@ -9,4 +9,8 @@ Flask==2.3.2
 flask_sqlalchemy==3.1.1
 SQLAlchemy==2.0.35
 gunicorn==21.2.0
+<<<<<<< HEAD
 psycopg[binary]>=3.1.0
+=======
+psycopg[binary]>=3.1.0
+>>>>>>> 4a7505aba08680c84ef6bcb8d9443fd09b5d2b23
