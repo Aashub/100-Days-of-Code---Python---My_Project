@@ -7,7 +7,11 @@ This is a data analysis and visualisation project where I used Pandas and Plotly
 The project focused on cleaning and preparing large datasets, analysing app popularity and competition, estimating app revenue, exploring pricing strategies, and creating interactive visualisations. Through this project, I learned how businesses can use data to understand market competition, identify profitable opportunities, evaluate pricing decisions, and analyse app performance across different categories.
 
 In this module, I compared thousands of Google Play Store apps to gain insights into how competitive different app categories are, which categories offer the best opportunities based on popularity, how downloads are affected when an app is paid instead of free, how much developers can reasonably charge for paid apps, which paid apps generated the highest revenues, and whether paid apps can realistically recover their development costs through sales.
- 
+
+## Notebook Link
+https://colab.research.google.com/drive/1cUhDWS10AfAvM7rGJxdaQE0xcc2Hec0C
+
+
 ## What I Have Learned
 
 * **How to Pull a Random Sample from a DataFrame Using .sample()**: Learned how to select random rows from a dataset using .sample(). This is useful when inspecting large datasets because it provides a quick and unbiased look at the data.
