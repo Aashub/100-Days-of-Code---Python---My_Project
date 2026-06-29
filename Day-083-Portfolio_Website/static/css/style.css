@@ -89,8 +89,8 @@ body{
 
 .resume-btn{
 
-    background: #333333;
-    color:white;
+    background: #FFD43B;
+    color:#333333;
 
     padding:3px 15px;
 
@@ -151,7 +151,7 @@ body{
 
     min-height: 100vh;
 
-    background: #ffffff;
+    background: #111111;
 
     overflow: hidden;
 
@@ -165,14 +165,28 @@ body{
 
 }
 
+.hero::before{
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(17,17,17,0.35);
+
+    z-index: 1;
+
+}
+
 
 .hero-tag{
 
     display:inline-block;
 
-    background:#1e293b;
+    background:#F7F7F7;
 
-    color:#93c5fd;
+    color:#333333;
 
     padding:10px 18px;
 
@@ -180,7 +194,7 @@ body{
 
     font-size:.9rem;
 
-    font-weight:600;
+    font-weight:700;
 
 }
 
@@ -191,10 +205,13 @@ body{
 
     font-weight:800;
 
-    margin-bottom:15px;
+    color: #E5E7EB;
 
 }
 
+.highlight-text{
+    color: #FFD43B;
+}
 
 .hero-subtitle{
 
@@ -202,7 +219,7 @@ body{
 
     font-weight:600;
 
-    color:#e2e8f0;
+    color:#FFFFFF;
 
     margin-bottom:25px;
 
@@ -211,13 +228,15 @@ body{
 
 .hero-description{
 
-    color:#94a3b8;
-
     line-height:1.9;
 
-    font-size:1rem;
+    font-size:1.08rem;
 
     max-width:550px;
+
+     font-weight: 400;
+
+    color: #E5E7EB;
 
 }
 
@@ -230,6 +249,10 @@ body{
 
     gap:20px;
 
+    align-items:center;
+
+
+
 }
 
 
@@ -240,6 +263,74 @@ body{
     border-radius:12px;
 
     font-weight:600;
+
+    border-width: 3px;
+
+
+}
+
+
+.hero-socials{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-left:10px;
+
+    height:100%;
+
+}
+
+.hero-socials{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-left:25px;
+
+}
+
+.hero-socials a{
+
+    width:48px;
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#FFD43B;
+
+    color:#333333;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    line-height:1;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+}
+
+.hero-socials a:hover{
+
+    background:#FFD43B;
+
+    color:#fff;
+
+    transform:translateY(-3px);
 
 }
 
@@ -254,10 +345,15 @@ body{
 
     border-radius:50%;
 
-    border:8px solid rgba(255,255,255,.08);
+    border:8px solid rgba(255, 255, 255, 0.08);
 
     box-shadow:
     0 0 0 10px rgba(37,99,235,.12),
     0 25px 60px rgba(0,0,0,.45);
 
+    filter: grayscale(100%) contrast(125%) brightness(90%);
+
+    transform: rotate(8deg);
+
 }
+

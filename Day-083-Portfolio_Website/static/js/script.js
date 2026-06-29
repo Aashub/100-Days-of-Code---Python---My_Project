@@ -24,13 +24,20 @@ const SIN_A = Math.sin(ANGLE);
 // =============================
 // PRE-COMPUTED COLOR CACHE
 // =============================
+
 const colorCache = [];
 for (let i = 0; i <= 100; i++) {
     const darkness = i / 100;
-    const baseOpacity = 0.25;
-    const opacity = baseOpacity + darkness * 0.45;
-    const shade = Math.floor(170 - darkness * 130);
-    colorCache.push(`rgba(${shade},${shade},${shade},${opacity.toFixed(3)})`);
+    // Visibility outside the wave
+    const baseOpacity = 0.15;
+    // Stronger wave
+    const opacity = baseOpacity + darkness * 0.85;
+    // Light gray → white
+    const shade = Math.floor(140 + darkness * 115);
+    colorCache.push(
+        `rgba(${shade},${shade},${shade},${opacity.toFixed(3)})`
+    );
+
 }
 
 // =============================
@@ -92,8 +99,6 @@ function updateBinaryValues() {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height / 2);
