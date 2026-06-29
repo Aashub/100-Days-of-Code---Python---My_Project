@@ -1,0 +1,179 @@
+{% include "header.html" %}   <!-- jinja template for header-->
+
+<!-- ================= NAV BAR SECTION ================= -->
+
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+
+    <div class="container">
+
+        <!-- Logo -->
+
+        <a class="navbar-brand d-flex align-items-center" href="#">
+
+            <div class="logo-circle">
+                A
+            </div>
+
+            <span class="logo-text ms-2">
+                Ashish
+            </span>
+
+        </a>
+
+
+        <!-- Mobile Toggle -->
+
+        <button class="navbar-toggler border-0 shadow-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- Navigation -->
+
+        <div class="collapse navbar-collapse ms-auto" id="navbarMenu">
+
+            <ul class="navbar-nav gap-lg-4">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">
+                        Projects
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">
+                        About Me
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- Resume Button -->
+
+        <a href="#" class="btn resume-btn d-none d-lg-inline-block">
+
+            Resume
+
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- ================= NAV Bar SECTION ================= -->
+
+<!-- ================= HERO SECTION ================= -->
+
+<section id="home" class="hero">
+
+     <!-- Animated Binary Background -->
+    <canvas id="binaryCanvas"></canvas>
+
+
+    <!-- ADD THIS: Faded overlay for the vignette effect -->
+    <div class="fade-overlay"></div>
+
+    <div class="container">
+
+        <div class="row align-items-center gy-5">
+
+            <!-- Left Side -->
+
+            <div class="col-lg-6">
+
+                <span class="hero-tag">
+                    👋 Welcome to my Portfolio
+                </span>
+
+                <h1 class="hero-title mt-4">
+
+                    Hi, I'm
+                    <span class="text-primary">
+                        Ashish
+                    </span>
+
+                </h1>
+
+                <h2 class="hero-subtitle">
+
+                    Python Developer specializing in
+                    Automation & Web Development
+
+                </h2>
+
+                <p class="hero-description">
+
+                    Passionate about building efficient, scalable and
+                    user-friendly applications. I enjoy solving problems,
+                    learning new technologies and creating modern web
+                    experiences.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects" class="btn btn-primary custom-btn">
+
+                        View My Work
+
+                    </a>
+
+                    <a href="#" class="btn btn-outline-light custom-btn">
+
+                        GitHub
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Right Side -->
+
+            <div class="col-lg-6 text-center">
+
+                <img src="images/profile.png"
+                     alt="Profile"
+                     class="hero-image img-fluid">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= HERO SECTION ================= -->
+
+
+<!-- Highlights -->
+<!-- Projects -->
+<!-- Github -->
+<!-- Tech Stack -->
+<!-- Contact -->
+
+
+{% include "footer.html" %}     <!-- jinja template for footer-->
