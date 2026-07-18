@@ -1,0 +1,263 @@
+{% include "header.html" %}   <!-- jinja template for header-->
+
+<!-- Page Header-->
+<header>
+
+    <section id="home" class="hero">
+
+        <!-- Animated Binary Background -->
+        <canvas id="binaryCanvas"></canvas>
+
+
+        <!-- ADD THIS: Faded overlay for the vignette effect -->
+        <div class="fade-overlay"></div>
+
+
+        <div class="container ">
+
+            <div class="row ">
+
+                <div class="col-xl-6 col-lg-6 ">
+
+                    <div class = "projects-hero-text  pt-xl-5 pt-lg-1 justify-content-end ">
+                        <h1 class="My-projects-color">My <span class = "projects-color">Projects</span></h1>
+                        <p class="projects-hero-desc ">Explore a collection of projects showcasing my expertise in Python,
+                            Flask,
+                            REST
+                            APIs, automation, web
+                            development, and problem-solving through practical, real-world applications.</p>
+                    </div>
+                </div>
+
+                <div class=" col-xl-6 col-lg-6 ">
+                    <div class="  card  card-layout ">
+                        <div class="card-body">
+             <pre><code><span class="comment"># portfolio.py</span>
+
+<span class="keyword">class</span> <span class="class-name">Portfolio</span>:
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="self">self</span>):
+        <span class="self">self</span>.primary_language = <span class="string">"Python"</span>
+        <span class="self">self</span>.framework = <span class="string">"Flask"</span>
+        <span class="self">self</span>.database = <span class="string">"SQLite"</span>
+        <span class="self">self</span>.projects = <span class="number">100</span>
+        <span class="self">self</span>.focus = [
+            <span class="string">"Web Development"</span>, <span class="string">"REST APIs"</span>,
+            <span class="string">"Automation"</span>, <span class="string">"Problem Solving"</span>
+        ]
+        <span class="self">self</span>.goal = <span class="string">"Learn continuously, build meaningful projects,</span>
+                     <span class="string">and grow as a developer"</span>
+
+    <span class="keyword">def</span> <span class="function">mission</span>(<span class="self">self</span>):
+        <span class="keyword">return</span> <span class="string">"Building practical software that solves real-world problems."</span>
+</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="for-col-alignment">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</header>
+
+
+<!-- main content-->
+<main>
+
+<section class="featured-project">
+
+    <div class="container">
+        <h2 class="title-featured-projects"> Project Showcase</h2>
+        <p class="description-featured-projects">Explore a curated selection of projects demonstrating my technical skills and hands-on development experience. More projects are available on GitHub.</p>
+
+
+        <div class="row">
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/blog-website.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Secure Blog Platform</h5>
+                        <p class="card-text">A full-featured blogging platform with secure authentication, role-based
+                            admin controls, rich text editing, and an interactive commenting system.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">Flask</span>
+                        <span class="badge rounded-pill me-2 mb-2">HTML5</span>
+                        <span class="badge rounded-pill me-2 mb-2">CSS3</span>
+                        <span class="badge rounded-pill me-2 mb-2">Bootstrap</span>
+                        <span class="badge rounded-pill me-2 mb-2">SQLAlchemy</span>
+                        <span class="badge rounded-pill me-2 mb-4">SQLite</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-069-Upgraded_Blog_Website(with%20Flask%20Authentification)" target="_blank" class="btn  featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/data-entry-web-scrapping.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Scrapping Data Entry</h5>
+                        <p class="card-text">Automates rental property data collection by scraping Zillow listings and
+                            seamlessly submitting them to Google Forms using BeautifulSoup and Selenium.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">BeautifulSoup</span>
+                        <span class="badge rounded-pill me-2 mb-2">Selenium</span>
+                        <span class="badge rounded-pill me-2 mb-2">ChromeDriver</span>
+                        <span class="badge rounded-pill me-1 mb-2">Web Scraping</span>
+                        <span class="badge rounded-pill me-1 mb-4">Google Forms</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-053-Web_Scraping_Data_Entry_Project" target="_blank" class="btn  featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/stock-news-alert-bot.png" class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Stock Market News Alert Bot</h5>
+                        <p class="card-text">Monitors significant stock price movements and delivers real-time Telegram
+                            alerts enriched with relevant financial news using multiple APIs.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">REST APIs</span>
+                        <span class="badge rounded-pill me-2 mb-2">Automation</span>
+                        <span class="badge rounded-pill me-2 mb-2">JSON</span>
+                        <span class="badge rounded-pill me-2 mb-2">NewsAPI</span>
+                        <span class="badge rounded-pill me-2 mb-4">Telegram Bot API</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-036-Stock_Trading_News_Alert_Telegram_Bot" target="_blank" class="btn featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+             <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/blog-website.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Secure Blog Platform</h5>
+                        <p class="card-text">A full-featured blogging platform with secure authentication, role-based
+                            admin controls, rich text editing, and an interactive commenting system.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">Flask</span>
+                        <span class="badge rounded-pill me-2 mb-2">HTML5</span>
+                        <span class="badge rounded-pill me-2 mb-2">CSS3</span>
+                        <span class="badge rounded-pill me-2 mb-2">Bootstrap</span>
+                        <span class="badge rounded-pill me-2 mb-2">SQLAlchemy</span>
+                        <span class="badge rounded-pill me-2 mb-4">SQLite</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-053-Web_Scraping_Data_Entry_Project" target="_blank" class="btn  featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/data-entry-web-scrapping.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Scrapping Data Entry</h5>
+                        <p class="card-text">Automates rental property data collection by scraping Zillow listings and
+                            seamlessly submitting them to Google Forms using BeautifulSoup and Selenium.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">BeautifulSoup</span>
+                        <span class="badge rounded-pill me-2 mb-2">Selenium</span>
+                        <span class="badge rounded-pill me-2 mb-2">ChromeDriver</span>
+                        <span class="badge rounded-pill me-1 mb-2">Web Scraping</span>
+                        <span class="badge rounded-pill me-1 mb-4">Google Forms</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-053-Web_Scraping_Data_Entry_Project" target="_blank" class="btn  featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/stock-news-alert-bot.png" class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Stock Market News Alert Bot</h5>
+                        <p class="card-text">Monitors significant stock price movements and delivers real-time Telegram
+                            alerts enriched with relevant financial news using multiple APIs.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">REST APIs</span>
+                        <span class="badge rounded-pill me-2 mb-2">Automation</span>
+                        <span class="badge rounded-pill me-2 mb-2">JSON</span>
+                        <span class="badge rounded-pill me-2 mb-2">NewsAPI</span>
+                        <span class="badge rounded-pill me-2 mb-4">Telegram Bot API</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-036-Stock_Trading_News_Alert_Telegram_Bot" target="_blank" class="btn  featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="parent-show-more-projects-btn">
+                <div class="text-center">
+                          <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project" target="_blank" rel="noopener noreferrer" class="btn browse-all-projects-btn"> <i class="bi bi-github me-2 "></i>
+                        Browse All Projects on GitHub
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+</main>
+
+
+{% include "footer.html" %}     <!-- jinja template for footer-->

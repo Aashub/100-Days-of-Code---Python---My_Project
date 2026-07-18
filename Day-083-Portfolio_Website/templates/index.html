@@ -1,86 +1,5 @@
 {% include "header.html" %}   <!-- jinja template for header-->
 
-<!-- ================= NAV BAR SECTION ================= -->
-
-<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
-
-    <div class="container">
-
-        <!-- Logo -->
-
-        <a class="navbar-brand d-flex align-items-center" href="#">
-
-            <div class="logo-circle">
-                A
-            </div>
-
-            <span class="logo-text ms-2">
-                Ashish
-            </span>
-
-        </a>
-
-
-        <!-- Mobile Toggle -->
-
-        <button class="navbar-toggler border-0 shadow-none"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-
-        <!-- Navigation -->
-
-        <div class="collapse navbar-collapse ms-auto" id="navbarMenu">
-
-            <ul class="navbar-nav gap-lg-4">
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                        Home
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#projects">
-                        Projects
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">
-                        About Me
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <!-- Resume Button -->
-
-        <a href="#" class="btn resume-btn d-none d-lg-inline-block">
-
-            Resume
-
-        </a>
-
-    </div>
-
-</nav>
-
-<!-- ================= NAV Bar SECTION ================= -->
 
 <!-- ================= HERO SECTION ================= -->
 
@@ -95,15 +14,15 @@
 
     <div class="container">
 
-        <div class="row align-items-center gy-5 mt-4">
+        <div class="row align-items-center gx-5 gy-5 mt-4">
 
             <!-- Left Side -->
 
-            <div class="col-lg-6">
+            <div class="col-md-6 col-lg-6 hero-section">
 
-                <span class="hero-tag">
-                    👋 Welcome to my Portfolio
-                </span>
+                    <span class="hero-tag">
+                        👋 Welcome to my Portfolio
+                    </span>
 
                 <h1 class="hero-title mt-4">
 
@@ -120,20 +39,21 @@
 
                 <p class="hero-description">
 
-                    Passionate about building efficient, scalable and user-friendly applications. I enjoy Automation,
+                    Passionate about building efficient, scalable and user-friendly applications. I enjoy
+                    Automation,
                     learning new technologies.
 
                 </p>
 
                 <div class="hero-buttons">
 
-                    <a href="#projects" class="btn btn-outline-light custom-btn">
+                    <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project" target="_blank" class="btn btn-outline-light custom-btn view-my-work">
 
                         View My Work
 
                     </a>
 
-                    <a href="#" class="btn btn-outline-light custom-btn">
+                    <a href="{{ url_for('contact') }}"  class="btn btn-outline-light custom-btn contact-me">
 
                         Contact Me
 
@@ -141,49 +61,428 @@
 
                     <div class="hero-socials">
 
-                        <a href="https://github.com/yourusername" target="_blank">
+                        <a href="https://github.com/Aashub" target="_blank">
                             <i class="bi bi-github"></i>
                         </a>
 
-                        <a href="https://linkedin.com/in/yourusername" target="_blank">
+                        <a href="https://www.linkedin.com/in/ashish-bamniya23/" target="_blank">
                             <i class="bi bi-linkedin"></i>
                         </a>
 
-                        <a href="mailto:your@email.com">
+                        <a href="mailto:ashishbam07@proton.me">
                             <i class="bi bi-envelope-fill"></i>
                         </a>
 
                     </div>
 
+
                 </div>
 
             </div>
-
-
             <!-- Right Side -->
 
-            <div class="col-lg-6 text-center">
+            <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center hero-image-column">
 
-                <img src="static/assets/img/hero2_img.png"
-                     alt="Profile"
-                     class="hero-image img-fluid">
+                <div class='hero-image-wrapper'>
+                    <img src="static/assets/img/hero2_img.png"
+                         alt="Profile"
+                         class="hero-image">
+                </div>
+
 
             </div>
 
         </div>
 
+
+        <div class='highlight-container'>
+
+            <div class="row ">
+
+                <div class="col-xl col-lg-4 col-md-4 col-sm-4 col-6 order-xl-1 order-lg-1 order-md-1 order-sm-1 order-1">
+                    <div class="highlight-items justify-content-center justify-content-sm-start justify-content-lg-start justify-content-xl-start d-flex align-items-center gap-2 projects-100 w-100">
+                        <span><i class='bi-star highlights-icon'></i></span>
+                        <span class=' highlights-text'>100 Projects</span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-xl col-lg-4 col-md-4 col-sm-4 col-6 order-xl-2 order-lg-2 order-md-2 order-sm-2 order-2">
+                    <div class="highlight-items  justify-content-center justify-content-sm-center justify-content-lg-center justify-content-xl-start d-flex align-items-center gap-2 lifelong-learner w-100">
+                        <i class=' bi-book highlights-icon me-2'></i>
+                        <span class=' highlights-text'>Lifelong learner</span>
+
+                    </div>
+                </div>
+
+                <div class="col-xl col-lg-4 col-md-4 col-sm-4 col-6 order-xl-3 order-lg-3 order-md-3 order-sm-5 order-5">
+                    <div class="highlight-items justify-content-center justify-content-sm-end justify-content-lg-end justify-content-xl-center d-flex align-items-center gap-2 self-taught-dev w-100">
+                        <i class=' bi-journal-code highlights-icon '></i>
+                        <span class=' highlights-text'>Self-Taught Developer</span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-xl col-lg-4 col-md-4 col-sm-4 col-6 order-xl-4 order-lg-4 order-md-4 order-sm-4 order-4">
+                    <div class="highlight-items highlight-items-last-two justify-content-center justify-content-sm-start  justify-content-lg-start justify-content-xl-end d-flex align-items-center gap-2 career-switcher w-100">
+                        <span><i class=' bi-box-arrow-up-right highlights-icon me-2'></i></span>
+                        <span class=' highlights-text'>Career Switcher</span>
+
+                    </div>
+                </div>
+
+
+                <div class="col-xl col-lg-4 col-md-4 col-sm-4 col-6 order-xl-5 order-lg-5 order-md-5 order-sm-3 order-3">
+                    <div class="highlight-items highlight-items-last-two justify-content-center justify-content-sm-center justify-content-lg-center  justify-content-xl-end d-flex align-items-center gap-2 open-to-work w-100">
+                        <span><i class='bi-briefcase highlights-icon me-2'></i></span>
+                        <span class=' highlights-text'>Open to Work</span>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
     </div>
+
 
 </section>
 
 <!-- ================= HERO SECTION ================= -->
 
+<!-- ================= PROJECT SECTION ================= -->
 
-<!-- Highlights -->
-<!-- Projects -->
-<!-- Github -->
-<!-- Tech Stack -->
-<!-- Contact -->
+<section class="featured-project">
 
+    <div class="container">
+        <h2 class="title-featured-projects">Featured Projects</h2>
+        <p class="description-featured-projects">Here are some of the projects I've worked on, showcasing my skills in
+            various technologies and problem
+            domains.</p>
+
+
+        <div class="row">
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/blog-website.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Secure Blog Platform</h5>
+                        <p class="card-text">A full-featured blogging platform with secure authentication, role-based
+                            admin controls, rich text editing, and an interactive commenting system.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">Flask</span>
+                        <span class="badge rounded-pill me-2 mb-2">HTML5</span>
+                        <span class="badge rounded-pill me-2 mb-2">CSS3</span>
+                        <span class="badge rounded-pill me-2 mb-2">Bootstrap</span>
+                        <span class="badge rounded-pill me-2 mb-2">SQLAlchemy</span>
+                        <span class="badge rounded-pill me-2 mb-4">SQLite</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-069-Upgraded_Blog_Website(with%20Flask%20Authentification)" target="_blank" class="btn featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/data-entry-web-scrapping.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Scrapping Data Entry</h5>
+                        <p class="card-text">Automates rental property data collection by scraping Zillow listings and
+                            seamlessly submitting them to Google Forms using BeautifulSoup and Selenium.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">BeautifulSoup</span>
+                        <span class="badge rounded-pill me-2 mb-2">Selenium</span>
+                        <span class="badge rounded-pill me-2 mb-2">ChromeDriver</span>
+                        <span class="badge rounded-pill me-1 mb-2">Web Scraping</span>
+                        <span class="badge rounded-pill me-1 mb-4">Google Forms</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-053-Web_Scraping_Data_Entry_Project" target="_blank" class="btn featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class=" col-lg-4">
+
+                <div class="card featured-project-cards gx-5">
+                    <img src="static/assets/img/stock-news-alert-bot.png" class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Stock Market News Alert Bot</h5>
+                        <p class="card-text">Monitors significant stock price movements and delivers real-time Telegram
+                            alerts enriched with relevant financial news using multiple APIs.</p>
+                        <span class="badge rounded-pill me-2 mb-2">Python</span>
+                        <span class="badge rounded-pill me-2 mb-2">REST APIs</span>
+                        <span class="badge rounded-pill me-2 mb-2">Automation</span>
+                        <span class="badge rounded-pill me-2 mb-2">JSON</span>
+                        <span class="badge rounded-pill me-2 mb-2">NewsAPI</span>
+                        <span class="badge rounded-pill me-2 mb-4">Telegram Bot API</span>
+                        <br>
+                        <a href="https://github.com/Aashub/100-Days-of-Code---Python---My_Project/tree/master/Day-036-Stock_Trading_News_Alert_Telegram_Bot" target="_blank" class="btn featured-github-button"><i class="bi bi-github me-1"></i>
+                            Github</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="parent-show-more-projects-btn">
+                <div class="text-center">
+                    <a href="{{url_for('projects')}}" class="btn btn-primary show-more-projects-btn">Show more projects<i
+                            class="bi bi-code show-more-code-icon"></i></a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+<!-- ================= PROJECT SECTION ================= -->
+
+<!-- ================= GITHUB CONTRIBUTION SECTION ================= -->
+
+<section>
+
+    <div class="container">
+
+        <h2 class="github-graph">GitHub Activity</h2>
+
+        <div class="github-contribution-box">
+
+            <p class="contribution-graph-text">Contribution Graph</p>
+            <div class="contribution-wrapper">
+
+                <div class="days-column">
+                    <div></div>
+                    <div>Mon</div>
+                    <div></div>
+                    <div>Wed</div>
+                    <div></div>
+                    <div>Fri</div>
+                    <div></div>
+                </div>
+
+                <div class="graph-section">
+
+                    <div class="months-row">
+                        {% for month in months_label %}
+                        <div class="contributions-months-label">{{month}}</div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="graph-container-grid">
+
+
+                        {% for week in range(num_of_weeks) %}
+                        {% for graph in contribution_graph[week]["contributionDays"] %}
+
+                        {% if graph.color == "#ebedf0": %}
+                        <div class="contribution-none contribution-cell"
+                             data-tooltip="{{ graph.contributionCount }} contributions on {{ graph.date }}"></div>
+
+                        {% elif graph.color == "#216e39": %}
+                        <div class="contribution-low contribution-cell"
+                             title="{{ graph.contributionCount }} contributions on {{ graph.date }}"></div>
+
+                        {% elif graph.color == "#9be9a8": %}
+                        <div class="contribution-medium contribution-cell"
+                             title="{{ graph.contributionCount }} contributions on {{ graph.date }}"></div>
+
+                        {% elif graph.color == "#40c463": %}
+                        <div class="contribution-high contribution-cell"
+                             title="{{ graph.contributionCount }} contributions on {{ graph.date }}"></div>
+
+                        {% elif graph.color == "#30a14e": %}
+                        <div class="contribution-max  contribution-cell"
+                             title="{{ graph.contributionCount }} contributions on {{ graph.date }}"></div>
+
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="contribution-highlights text-nowrap">
+
+                <div class="repository-count-card">Repository Count <span class="repository-count-number">{{contribution_highlights[0]}}</span>
+                </div>
+
+
+                <div class="total-forks-card">Total Forks<span
+                        class="total-forks-number">{{contribution_highlights[2]}}</span></div>
+                <div class="total-stars-card"><i class="bi bi-star-fill"></i>Total Stars<span
+                        class="total-stars-number">{{contribution_highlights[1]}}</span>
+                </div>
+
+                <div class="total-contributions-card">Total Contributions <span class="total-contributions-card-number">&nbsp;{{contribution_highlights[3]}}</span>
+                </div>
+
+            </div>
+
+            <div class="view-github-profile">
+                <a href="https://github.com/Aashub" target="_blank" class="btn view-github-profile-btn">View Github Profile</a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- ================= GITHUB CONTRIBUTION SECTION ================= -->
+
+
+<!-- ================= Tech Stack SECTION ================= -->
+
+
+<section>
+
+    <div class="container">
+        <h2 class="tech-stack">Tech Stack</h2>
+        <p class="description-tech-stack">A collection of languages, frameworks, databases, and development tools I use
+            to create fast, reliable, and scalable software solutions.</p>
+
+        <div class="tech-stack-card-container">
+            <div class="row ">
+                <div class=" col-lg-4 col-md-6 col-sm-6 order-lg-1 order-md-1 order-sm-1">
+
+                    <div class="card tech-stack-card ">
+                        <div class="card-body ps-4 tech-stack-card-body">
+                            <h5 class="pt-2 tech-stack-card-title"><i class="bi bi-code me-1 "></i> Core
+                                Technologies</h5>
+                            <div class="pt-3">
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">Python</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">HTML5</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">CSS3</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-4">Bootstrap</span>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class=" col-lg-4 col-md-6 col-sm-6 order-lg-2 order-md-2 order-sm-2">
+
+                    <div class="card tech-stack-card ">
+                        <div class="card-body ps-4 tech-stack-card-body">
+                            <h5 class="pt-2 tech-stack-card-title"><i class="bi bi-terminal me-1 "></i> Backend
+                                Development</h5>
+                            <div class="pt-3">
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">Flask</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">RESTful API</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">SQLAlchemy</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-4">Jinja2</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class=" col-lg-4 col-md-6 col-sm-6 order-lg-3 order-md-5 order-sm-5">
+
+                    <div class="card tech-stack-card ">
+                        <div class="card-body ps-4 tech-stack-card-body">
+                            <h5 class="pt-2 tech-stack-card-title"><i class="bi bi-gear me-1 "></i> Tools</h5>
+                            <div class="pt-3">
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">Git</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">PyCharm</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-2 me-3 mb-2">VS Code</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">Postman</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-4">Figma</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class=" col-lg-4 col-md-6 col-sm-6 order-lg-4 order-md-4 order-sm-4">
+
+                    <div class="card tech-stack-card ">
+                        <div class="card-body ps-4 tech-stack-card-body">
+                            <h5 class="pt-2 tech-stack-card-title"><i class="bi bi-database me-1 "></i> Databases</h5>
+                            <div class="pt-2">
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-4">SQLite</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class=" col-lg-4 col-md-6 col-sm-6 order-lg-5 order-md-3 order-sm-3">
+
+                    <div class="card tech-stack-card ">
+                        <div class="card-body ps-4 tech-stack-card-body">
+                            <h5 class="pt-2 tech-stack-card-title"><i class="bi bi-cloud me-1 "></i> Platforms
+                            </h5>
+                            <div class="pt-2">
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-2">Github</span>
+                                <span class="badge tech-stack-badge rounded-pill me-lg-3 me-md-3 me-3 mb-4">Vercel</span>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- ================= Tech Stack SECTION ================= -->
 
 {% include "footer.html" %}     <!-- jinja template for footer-->

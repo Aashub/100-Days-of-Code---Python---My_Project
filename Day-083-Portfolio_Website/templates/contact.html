@@ -1,0 +1,278 @@
+{% include "header.html" %}   <!-- jinja template for header-->
+
+<!-- Page Header-->
+<header>
+
+    <section id="home" class="hero contact-hero">
+
+        <!-- Animated Binary Background -->
+        <canvas id="binaryCanvas"></canvas>
+
+
+        <!-- ADD THIS: Faded overlay for the vignette effect -->
+        <div class="fade-overlay"></div>
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <!-- g-0 removes the default column padding so elements can touch the screen edge -->
+                <div class="row offset-xl-1">
+
+                    <!-- Text Column -->
+                    <div class="parent-lets-connect col-12  col-xl-8 mr-3">
+                        {% if show_success %}
+                        <!-- if successful_msg variable is equal "successful" than this condition will implement-->
+                        <h1 class="lets-connect-text">Email Sent <span class="contact-highlight-text">Successfully</span></h1>
+                        {% else: %}
+                        <!-- if successful_msg variable is not equal "successful" than this condition will implement-->
+                        <h1 class="lets-connect-text">Let's <span class="contact-highlight-text">Connect</span></h1>
+                        {% endif %}
+                        <p class="lets-connect-description">
+                            Have an opportunity or just want to say hello? I'd be happy to hear from you and discuss new
+                            ideas.
+                        </p>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</header>
+
+
+<!-- main content-->
+<main>
+
+
+    <section>
+
+        <div class="container  ">
+
+
+            <div class="card parent-contact-me-card offset-xl-1 h-75  col-xl-10">
+
+                <div class="card-body p-4 ">
+
+                    <div class="row g-5 ">
+
+                        <!-- ================= LEFT SIDE ================= -->
+                        <div class="col-12 col-md-12 col-lg-6 ">
+
+                            <div class="card shadow-lg parent-contact-card-body h-100">
+
+                                <div class="text-center py-4">
+                                    <h5 class="card-title fw-bold mb-0 card-title">
+                                        Let's Talk
+                                    </h5>
+                                </div>
+
+                                <div class="card-body px-4 ">
+
+                                    <form id="contactForm" name="sentMessage" action="{{ url_for('contact') }}"
+                                          method="post">
+
+                                        <div class="mb-3">
+                                            <label for="userName" class="form-label small fw-bold form-body-text">
+                                                Full Name
+                                            </label>
+
+                                            <input
+                                                    name="name"
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="userName"
+                                                    placeholder="John Doe"
+                                                    required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label small fw-bold form-body-text">
+                                                Email Address
+                                            </label>
+
+                                            <input
+                                                    name="email"
+                                                    type="email"
+                                                    class="form-control"
+                                                    id="userEmail"
+                                                    placeholder="name@example.com"
+                                                    required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="subjectMessage" class="form-label small fw-bold form-body-text">
+                                                Subject
+                                            </label>
+
+                                            <input
+                                                    name="subject"
+                                                    type="text"
+                                                    class="form-control "
+                                                    id="subjectMessage"
+                                                    placeholder="Reason for contacting me"
+                                                    required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="userMessage" class="form-label small fw-bold form-body-text">
+                                                Message
+                                            </label>
+
+                                            <textarea
+                                                    name="message"
+                                                    class="form-control"
+                                                    id="userMessage"
+                                                    rows="3"
+                                                    placeholder="Tell me about the role or opportunity..."
+                                                    required></textarea>
+                                        </div>
+
+                                        <button
+                                                type="submit"
+                                                class="btn contact-btn-color mb-2">
+                                            Send Message
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ================= RIGHT SIDE ================= -->
+                        <div class="col-12 col-lg-6">
+
+                            <div class="sm-4 ms-sm-4  ms-md-5 ms-lg-5 ms-xl-5 d-flex flex-column justify-content-center">
+
+                                <div class="text-center py-4">
+                                    <h5 class="fw-bold mb-0 card-title-right">
+                                        Reach Me Directly
+                                    </h5>
+
+                                </div>
+
+
+                                <div class="mb-2 mt-4 ms-3">
+
+                                    <label for="userName" class="form-label fw-bold form-body-text">
+                                        Email
+                                    </label>
+
+                                    <p class="mb-0 ">
+                                        <a class="text-decoration-none right-side-link-text"
+                                           href="mailto:ashishbam07@proton.me">
+                                            ashishbam07@proton.me
+                                        </a>
+
+                                    </p>
+
+                                </div>
+
+                                <div class="mb-2 mt-4 ms-3">
+
+                                    <label class="form-label fw-bold form-body-text">
+                                        LinkedIn
+                                    </label>
+
+                                    <p class="mb-0">
+                                        <a class="text-decoration-none right-side-link-text"
+                                           href="https://www.linkedin.com/in/ashish-bamniya23/" target="_blank">
+                                            linkedin.com/in/ashish-bamniya23
+                                        </a>
+                                    </p>
+
+                                </div>
+
+                                <div class="mb-2 mt-4 ms-3">
+
+                                    <label class="form-label fw-bold form-body-text">
+                                        GitHub
+                                    </label>
+
+                                    <p class="mb-0">
+                                        <a class="text-decoration-none right-side-link-text"
+                                           href="https://github.com/Aashub" target="_blank">
+                                            github.com/Aashub
+                                        </a>
+                                    </p>
+
+                                </div>
+
+                                <div class="mb-2 mt-4 ms-3">
+
+                                    <label class="form-label fw-bold form-body-text">
+                                        <a class="bi bi-twitter-x  form-body-text me-4 ">
+                                        </a>
+                                    </label>
+
+
+                                    <p class="mb-0">
+                                        <a class="text-decoration-none right-side-link-text"
+                                           href="https://x.com/AashuBam" target="_blank">
+                                            @AashuBam
+                                        </a>
+                                    </p>
+
+                                </div>
+
+                                <div class="mb-4 mt-4 ms-3">
+
+                                    <i class="bi bi-clock me-2"></i>
+
+                                    <span class="form-body-text ">
+                            Usually responds within 24 hours
+                        </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <section>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class=" mx-auto text-center col-xl-6 col-lg-6 mb-5 thank-you-text">
+                    <h4 class="thank-you-header mb-4">Thank You</h4>
+                    <p class="thank-you-body">Thanks for Taking the time to Explore my Portfolio I look forward to
+                        connecting and building
+                        something amazing together</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+{% include "footer.html" %}     <!-- jinja template for footer-->

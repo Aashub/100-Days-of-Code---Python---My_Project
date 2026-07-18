@@ -31,6 +31,103 @@
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
     <!-- here we are url_for method for specifying correct file path for css file.-->
 
+
 </head>
 
 <body>
+
+
+<!-- ================= NAV BAR SECTION ================= -->
+
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <!-- Logo -->
+
+        <a class="navbar-brand d-flex align-items-center" href="{{url_for('home')}}">
+
+            <div class="logo-circle">
+                AB
+            </div>
+
+            <span class="logo-text ms-2">
+                Ashish
+            </span>
+
+            <div class="d-flex align-items-center"></div>
+
+        </a>
+
+        <div class="d-flex align-items-center">
+
+
+            <!-- Mobile Toggle -->
+
+            <button class="navbar-toggler border-0 shadow-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarMenu">
+
+                <span class="navbar-toggler-icon"></span>
+
+
+            </button>
+
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <div class="collapse navbar-collapse ms-auto" id="navbarMenu">
+
+            <ul class="navbar-nav gap-lg-4">
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'home' %}active{% endif  %}" href="{{url_for('home')}}">
+                        Home
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'projects' %}active{% endif  %}" href="{{url_for('projects')}}">
+                        Projects
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'about_me' %}active{% endif %}" href="{{ url_for('about_me') }}">
+                        About Me
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'contact' %}active{% endif  %} " href="{{ url_for('contact') }}">
+                        Contact
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a href="resume button" class="btn resume-btn d-lg-inline-block">
+
+                        Resume
+
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- Resume Button -->
+
+
+    </div>
+
+</nav>
+
+<!-- ================= NAV Bar SECTION ================= -->
