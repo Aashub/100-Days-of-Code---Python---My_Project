@@ -1,0 +1,36 @@
+{
+    "preset 1": {
+        "watermark_text": "watermark",
+        "font_properties": {
+            "family": "Comic Sans MS",
+            "size": 14,
+            "weight": "bold",
+            "slant": "italic",
+            "underline": 0,
+            "overstrike": 0
+        },
+        "font_color": "springgreen",
+        "font_angle": 0,
+        "font_coordinate": [
+            400,
+            23.5
+        ]
+    },
+    "preset 2": {
+        "watermark_text": "watermark",
+        "font_properties": {
+            "family": "Consolas",
+            "size": 25,
+            "weight": "bold",
+            "slant": "italic",
+            "underline": 1,
+            "overstrike": 0
+        },
+        "font_color": "darkviolet",
+        "font_angle": "45",
+        "font_coordinate": [
+            918.8036410923277,
+            89.33333333333333
+        ]
+    }
+}
